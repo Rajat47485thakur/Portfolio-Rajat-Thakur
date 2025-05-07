@@ -17,12 +17,18 @@ export class AboutComponent implements AfterViewInit {
   constructor() { }
 
   ngAfterViewInit() {
+
+    const screenWidth = window.innerWidth;
+    const rootMarginValue = screenWidth <= 600 ? '0px 0px 900px 0px' : '0px 0px 200px 0px';
+    
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        this.isInView = entry.isIntersecting; // Toggle true/false every time it enters/leaves
+        this.isInView = entry.isIntersecting;
       });
     }, {
-      threshold: 0.0 // Adjust based on how much of the section must be visible
+      threshold: 0,
+      rootMargin: rootMarginValue
     });
 
     observer.observe(this.aboutSection.nativeElement);
