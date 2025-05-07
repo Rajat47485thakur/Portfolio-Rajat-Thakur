@@ -8,7 +8,7 @@ $whitesmoke-color: whitesmoke;
 $border-color: rgb(53, 53, 53);
 $darkgrey-color: rgb(85, 85, 85);
 $hover-background: rgb(53, 53, 53);
-$decoration-color: rgb(181,181, 181);
+$decoration-color: rgb(181, 181, 181);
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -19,8 +19,10 @@ html {
   scroll-behavior: smooth;
 }
 
-p, li, .subtitle {
-  color: rgb(85,85,85);
+p,
+li,
+.subtitle {
+  color: rgb(85, 85, 85);
 }
 
 section {
@@ -82,4 +84,17 @@ i.pointer {
     background: $hover-background;
     border-color: $whitesmoke-color;
   }
+}
+
+
+.after_header {
+  position: relative;
+  // width: 100%;
+  padding: 1rem 0 0 0;
+  background: linear-gradient(90deg, hwb(197 27% 20%) 0%, #57c785 50%, #eddd53 100%);
+
+}
+
+.text-shadow {
+  text-shadow: 1px 1px 4px #05050526 !important;
 }

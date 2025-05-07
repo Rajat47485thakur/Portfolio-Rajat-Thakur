@@ -1,8 +1,19 @@
 .header-container {
-  height: 25vh;
+  // height: vh;
   max-width: 1800px;
 
   @media (max-width: 1000px) {
     height: 33vh;
   }
+}
+
+.header-container {
+  background-color: #1a1a1a;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.color-white{
+  color: white;
 }
