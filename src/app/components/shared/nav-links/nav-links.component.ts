@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {ViewportScroller} from "@angular/common";
+import { Component, EventEmitter, Output } from '@angular/core';
+import { ViewportScroller } from "@angular/common";
 
 @Component({
   selector: 'app-nav-links',
@@ -9,14 +9,19 @@ import {ViewportScroller} from "@angular/common";
   styleUrl: './nav-links.component.scss'
 })
 export class NavLinksComponent {
+  @Output() closeAsideEvent = new EventEmitter<void>();
 
-  constructor(private viewportScroller: ViewportScroller) {}
+  constructor(private viewportScroller: ViewportScroller) { }
 
-  protected  navItems: string[] = ['About', 'Skill Set', 'Projects', 'Contacts'];
+  protected navItems: string[] = ['About', 'Skill Set', 'Projects', 'Contacts'];
 
   scrollTo(section: string) {
     let elementId = section.toLowerCase().replace(' ', '-');
     this.viewportScroller.scrollToAnchor(elementId);
   }
 
+
+  triggerCloseAside() {
+    this.closeAsideEvent.emit();
+  }
 }
