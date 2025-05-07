@@ -18,10 +18,24 @@
   color: white;
 }
 
+.navbar-toggler-icon {
+  display: none;
+}
+
 @media screen and (max-width: 600px) {
   .header-container {
     height: 10vh;
 
   }
-}
 
+  .navbar-toggler-icon {
+    display: block;
+  }
+
+  .navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: black;
+  }
+}
