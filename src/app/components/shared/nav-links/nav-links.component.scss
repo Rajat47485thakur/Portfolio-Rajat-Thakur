@@ -26,9 +26,14 @@ a::after {
 a:hover {
   background: none;
   -webkit-background-clip: initial;
-  -webkit-text-fill-color: #111;
+  -webkit-text-fill-color: #e4e4e4;
 }
 
 a:hover::after {
   transform: scaleX(1);
+}
+
+
+.nav-link {
+  padding: 0 !important;
 }
