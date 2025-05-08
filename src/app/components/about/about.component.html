@@ -1,44 +1,66 @@
 <section id="about" class="container col-11 col-lg-10 mx-auto">
-  <p class="fs-5 text-center">Get to know more</p>
+  <p class="fs-5 text-center text-muted">Get to know me better</p>
   <h1 class="fw-bold text-center">About Me</h1>
-  <div class="row mt-4">
+
+  <div class="row mt-4 animate-on-scroll" [ngClass]="{ 'in-view': isInView }">
+    <!-- Profile Image -->
     <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center mb-4 mb-lg-0">
-      <img class="about-pic img-fluid rounded-5" src="./assets/full-rajat-img.jpg" alt="Rajat's about image">
+      <img class="about-pic img-fluid rounded-5 shadow" 
+           src="./assets/full-rajat-img.jpg" 
+           alt="Rajat's profile image"
+           [ngClass]="{ 'in-view-left': isInView }">
     </div>
+
+    <!-- Cards and Bio -->
     <div class="col-12 col-lg-8 d-flex flex-column justify-content-center align-items-center">
       <div class="row w-100">
-        <div class="col-12 col-md-6 d-flex justify-content-center mb-3">
-          <div class="about-card card w-100 border-black">
+        <!-- Experience Card -->
+        <div class="col-12 col-md-6 d-flex justify-content-center mb-3" [ngClass]="{ 'in-view': isInView }">
+          <div class="about-card card w-100 border-dark shadow-sm h-100">
             <div class="card-body text-center">
-              <i class="fa fa-award fa-2x icon"></i>
-              <h3 class="fw-bold about-subtitle">Experience</h3>
+              <i class="fa fa-award fa-2x icon mb-3 text-primary"></i>
+              <h3 class="fw-bold about-subtitle">Professional Experience</h3>
               <p class="card-text">
-                {{ getExperienceYears() }}+ years of experience
-                <br>in Software Development with
-                <br>a focus on the Backend side
+                <strong>{{ getExperienceYears() }}+</strong> Year of full-stack experience in
+                <strong>Angular</strong>, <strong>Node.js</strong>, and <strong>MongoDB/SQL</strong>.
+                <br><br>
+                Built scalable APIs, dynamic dashboards, and real-time systems
+                for service-based and eCommerce platforms.
+                <br><br>
+                Strong focus on clean architecture, performance, and agile team delivery.
               </p>
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-6 d-flex justify-content-center mb-3">
-          <div class="about-card card w-100 border-black">
+
+        <!-- Core Expertise Card -->
+        <div class="col-12 col-md-6 d-flex justify-content-center mb-3" [ngClass]="{ 'in-view': isInView }">
+          <div class="about-card card w-100 border-dark shadow-sm h-100">
             <div class="card-body text-center">
-              <i class="fa fa-laptop-code fa-2x icon"></i>
-              <h3 class="fw-bold about-subtitle">Specialized In</h3>
+              <i class="fa fa-laptop-code fa-2x icon mb-3 text-success"></i>
+              <h3 class="fw-bold about-subtitle">Core Expertise</h3>
               <p class="card-text">
-                Web Development<br>Microservices Architecture<br>Relational Databases<br>Blockchain & Fintech Industries
+                <strong>Angular 14–19</strong> for modular UI/UX and responsive dashboards.
+                <br><br>
+                <strong>Node.js, Express, JWT</strong> for secure APIs and real-time features.
+                <br><br>
+                <strong>MongoDB & SQL</strong> for scalable, optimized data models in production apps.
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div class="w-100 text-center mt-3">
-        <p>
-          I'm Rajat Thakur, a MEAN Stack developer based in India(Mohali) with over 1 years of diverse experience.
-          I specialize in crafting robust Javascript-based solutions with Express and Angular 18,
-          aligning technical objectives with user needs, and exploring new and exciting technologies like Angular.
-          My passion lies in tackling diverse challenges in the dynamic tech landscape,
-          drawing from my international experiences to thrive in collaborative environments.
+
+      <!-- Bio Section -->
+      <div class="w-100 text-center mt-3" #aboutSection>
+        <p class="about-text-section" [ngClass]="{ 'in-view-right': isInView }">
+          I'm <strong>Rajat Thakur</strong>, a MEAN Stack Developer based in Mohali, India, with over
+          <strong>{{ getExperienceYears() }} Year</strong> of hands-on experience.
+          I specialize in building robust, scalable admin dashboards, real-time systems, and modular APIs,
+          using <strong>Angular 14–19</strong>, <strong>Node.js</strong>, and modern NoSQL/SQL databases.
+          My passion lies in transforming business logic into performant code, with a sharp eye for
+          intuitive UI/UX and system design. Always eager to innovate, I thrive in dynamic, team-driven
+          environments that value clean architecture and continuous learning.
         </p>
       </div>
     </div>

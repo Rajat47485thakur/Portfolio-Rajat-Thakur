@@ -27,3 +27,18 @@ a {
     z-index: -1;
   }
 }
+
+.contact_us {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+
+  .contact_option {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1rem;
+    flex-wrap: wrap;
+  }
+}

@@ -1,11 +1,28 @@
-<app-header />
-<div class="after_header">
-    <app-profile />
-    <app-about />
-    <app-experience />
-    <app-projects />
-</div>
-<div class="after_contact">
-    <app-contact />
-    <app-footer />
+<div class="parent">
+    <div class="all-in">
+        <app-header class="app-header" (toggleAsideEvent)="toggleAside()"></app-header>
+
+        <aside class="mobile-aside" [class.open]="isAsideOpen">
+            <div class="aside-header background-color-black">
+                <span class="fs-4 color-white">Menu</span>
+                <button class="close-btn" (click)="toggleAside()">✖</button>
+            </div>
+            <ul class="navbar-nav">
+                <app-nav-links (closeAsideEvent)="closeAside()"></app-nav-links>
+            </ul>
+        </aside>
+
+    </div>
+    <div class="full_slide_down">
+        <div class="after_header">
+            <app-profile />
+            <app-about />
+            <app-experience />
+            <app-projects />
+        </div>
+        <div class="after_contact">
+            <app-contact />
+            <app-footer />
+        </div>
+    </div>
 </div>
