@@ -2,19 +2,30 @@
   <p class="fs-5 text-center">Get in Touch</p>
   <h1 class="fw-bold text-center mb-5">Contact Me</h1>
   <div class="contact_us">
-    <div class="col-10 col-md-6 col-xl-4 mx-auto">
+    <div class="col-10 col-md-8 col-xl-6 mx-auto">
       <div class="card  rounded-5 border-black contact-card">
         <div class="contact_option">
-          <div class="col-6 text-center">
+          <div class="text-center">
             <a [href]="'mailto:' + email" class="d-flex align-items-center justify-content-center">
               <i class="fa fa-envelope fa-2x icon"></i>&nbsp;Email
             </a>
           </div>
-          <div class="col-6 text-center">
+          <div class="text-center">
+            <a (click)="goToPhone()" class="d-flex align-items-center justify-content-center">
+              <i class="fas fa-phone fa-2x icon"></i>&nbsp;Phone
+            </a>
+          </div>
+          <div class="text-center">
+            <a (click)="goToWhatsapp()" class="d-flex align-items-center justify-content-center">
+              <i class="fab fa-whatsapp fa-2x icon"></i>&nbsp;WhatsApp
+            </a>
+          </div>
+          <div class="text-center">
             <a (click)="goToLinkedin()" class="d-flex align-items-center justify-content-center">
               <i class="fab fa-linkedin fa-2x icon"></i>&nbsp;Linkedin
             </a>
           </div>
+
         </div>
       </div>
     </div>
