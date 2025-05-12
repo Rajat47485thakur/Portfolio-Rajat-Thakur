@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {NgClass, NgForOf} from "@angular/common";
-import {ProjectItemComponent} from "./project-item/project-item.component";
+import { Component } from '@angular/core';
+import { NgClass, NgForOf } from "@angular/common";
+import { ProjectItemComponent } from "./project-item/project-item.component";
 
 export interface Project {
   name: string;
@@ -23,41 +23,35 @@ export interface Project {
 })
 export class ProjectsComponent {
 
-  protected projects: Project[]  = [
+  protected projects: Project[] = [
     {
       name: 'My Portfolio',
       description: 'Feel free to check out the code for my portfolio on Github. It\'s open for exploration, and you\'re welcome to fork it and create your own version!',
-      technologies: ['Angular', 'TypeScript', 'HTML', 'SCSS', 'Bootstrap', 'GitHub Pages', 'Github Actions'],
+      technologies: ['Angular', 'TypeScript', 'HTML', 'SCSS', 'Bootstrap', 'Netlify', 'Github Actions'],
       src: './assets/projects/portfolio.png',
-      link: 'https://github.com/SebastianoFazzino/my-portfolio',
+      link: 'https://github.com/Rajat47485thakur/Portfolio-Rajat-Thakur',
     },
     {
-      name: 'Banking App Decision Engine',
-      description: 'Ever wondered how banks decide on loan approvals? Dive into the code of this project, built with Angular, TypeScript, HTML, SCSS, Java, and Spring Boot, to see a simplified version of the process.',
-      technologies: ['Angular', 'TypeScript', 'HTML', 'SCSS', 'Java', 'Spring Boot', 'H2 Database'],
-      src: './assets/projects/bank.png',
-      link: 'https://github.com/SebastianoFazzino/banking-app',
+      name: 'Ecommerce Web Panel',
+      description: 'Built with Angular 18, this full-stack eCommerce admin and customer panel lets customers browse and purchase products added by admins acting as merchants. It integrates both MongoDB and SQL for flexible data handling and scalable architecture.',
+      technologies: ['Angular 18', 'TypeScript', 'HTML', 'SCSS', 'MongoDB', 'SQL', 'Node.js', 'Express'],
+      src: './assets/projects/ecom.png',
+      link: 'https://github.com/yourusername/ecommerce-web-panel', // replace with your actual repo link
+    },
+
+    {
+      name: 'Car Rental Web App (Customer)',
+      description: 'A responsive car rental application where customers can browse and book vehicles listed by registered hosts. Includes a guest flow for exploring listings and a secure booking flow for registered users, built with modern web technologies.',
+      technologies: ['Angular 19', 'TypeScript', 'HTML', 'SCSS', 'Node.js', 'Express', 'MongoDB', 'JWT'],
+      src: './assets/projects/car-rental.png',
+      link: 'https://github.com/yourusername/car-rental-customer-app', // Replace with actual GitHub link
     },
     {
-      name: 'Simplified Poker Game',
-      description: 'Step into the world of card games with my simplified poker game project! Built with Scala 2.17.8, it features a simple console-based interface, a basic game engine and a Mongo persistent layer.',
-      technologies: ['Scala', 'MongoDB', 'Mockito', 'JUnit'],
-      src: './assets/projects/poker.png',
-      link: 'https://github.com/SebastianoFazzino/poker-game',
+      name: 'Car Rental Admin Panel',
+      description: 'Admin dashboard for a car rental platform where administrators can monitor all bookings, manage available vehicles, hosts, and customers, and verify the authenticity of users to ensure smooth and secure business operations.',
+      technologies: ['Angular 14', 'TypeScript', 'HTML', 'SCSS', 'Node.js', 'Express', 'MongoDB', 'SQL'],
+      src: './assets/projects/car-rental-admin.png',
+      link: 'https://github.com/yourusername/car-rental-admin-panel', // Replace with actual GitHub link
     },
-    {
-      name: 'Number Game',
-      description: 'Discover an upgraded twist on the classic number game! This project integrates both frontend and backend development, using Java 11 with Spring Boot 2.7 for server-side logic and Angular 18 as user interface, styled with Bootstrap and FontAwesome',
-      technologies: ['Java', 'Spring Boot', 'Angular', 'TypeScript', 'Bootstrap', 'FontAwesome'],
-      src: './assets/projects/numbers.png',
-      link: 'https://github.com/SebastianoFazzino/enhanced-number-game',
-    },
-    {
-      name: 'Data Science Project: The Battle of Neighborhoods',
-      description: 'A data science project analyzing Tallinn\'s neighborhoods using data from Foursquare, Wikipedia, and transport sites. It identifies ideal residential areas through clustering and regression techniques.',
-      technologies: ['Python', 'Jupiter Notebook', 'Pandas', 'Numpy', 'Matplotlib', 'Seaborn', 'Foursquare API'],
-      src: './assets/projects/data-science.png',
-      link: 'https://github.com/SebastianoFazzino/IBM-Data-Science-Professional-Certificate/tree/main/Applied%20Data%20Science%20Capstone',
-    }
   ];
 }
