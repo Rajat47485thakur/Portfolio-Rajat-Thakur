@@ -40,14 +40,14 @@ export class ProjectsComponent {
     },
 
     {
-      name: 'Car Rental Web App (Customer)',
+      name: 'Rent Ride Web App (Customer)',
       description: 'A responsive car rental application where customers can browse and book vehicles listed by registered hosts. Includes a guest flow for exploring listings and a secure booking flow for registered users, built with modern web technologies.',
       technologies: ['Angular 19', 'TypeScript', 'HTML', 'SCSS', 'Node.js', 'Express', 'MongoDB', 'JWT'],
       src: './assets/projects/car-rental.jpg',
       link: 'https://github.com/yourusername/car-rental-customer-app', // Replace with actual GitHub link
     },
     {
-      name: 'Car Rental Admin Panel',
+      name: 'Rent Ride Dashboard',
       description: 'Admin dashboard for a car rental platform where administrators can monitor all bookings, manage available vehicles, hosts, and customers, and verify the authenticity of users to ensure smooth and secure business operations.',
       technologies: ['Angular 14', 'TypeScript', 'HTML', 'SCSS', 'Node.js', 'Express', 'MongoDB', 'SQL'],
       src: './assets/projects/panel-car-rental.jpg',
