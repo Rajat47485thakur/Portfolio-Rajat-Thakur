@@ -1,0 +1,17 @@
+.profile-pic {
+  max-width: 450px;
+  width: 100%;
+
+  @media (max-width: 1400px) {
+    max-width: 300px;
+    width: 100%;
+  }
+}
+
+#profile {
+  padding: 0.3rem 0 0 0;
+
+  .row {
+    margin-right: none;
+  }
+}
