@@ -1,21 +1,26 @@
-<div class="card text-center">
-  <img [src]="project.src" class="card-img-top" [alt]="project.name">
-  <div class="card-body">
-    <h5 class="card-title mt-3">
+<div class="card text-center h-100 shadow-sm border-0 bg-white" style="transition: transform 0.3s ease;">
+  <img [src]="project.src" class="card-img-top rounded-top" [alt]="project.name" style="height: 200px; object-fit: cover;">
+  <div class="card-body d-flex flex-column p-4">
+    <h5 class="card-title fw-bold mb-3">
       {{ project.name }}
     </h5>
-    <p class="card-text">{{ project.description }}</p>
-    <div>
-      <span class="fw-bold">Technologies used:</span>
-      <ul class="technologies-list">
-        @for (technology of project.technologies; track technology) {
-          <li>{{ technology }}</li>
+    <p class="card-text flex-grow-1 text-muted mb-4">{{ project.description }}</p>
+    
+    <div class="mb-4">
+      <span class="fw-bold fs-6 text-uppercase" style="letter-spacing: 0.5px;">Technologies:</span>
+      <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
+        @for (technology of project.technologies.slice(0, 4); track technology) {
+          <span class="badge bg-light text-dark border px-2 py-1 rounded-pill fw-medium">{{ technology }}</span>
         }
-      </ul>
+        @if (project.technologies.length > 4) {
+          <span class="badge bg-secondary text-white px-2 py-1 rounded-pill fw-medium">+{{project.technologies.length - 4}}</span>
+        }
+      </div>
     </div>
-    <div>
-      <a [routerLink]="['/project', project.id]" class="bt btn btn-color-2 me-2">
-        View Details
+
+    <div class="mt-auto">
+      <a [routerLink]="['/project', project.id]" class="bt btn-color-2 w-auto px-4 d-inline-flex align-items-center justify-content-center text-decoration-none shadow-sm">
+        View Details <i class="fa fa-arrow-right ms-2"></i>
       </a>
     </div>
   </div>

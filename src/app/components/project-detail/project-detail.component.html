@@ -1,36 +1,36 @@
 <section class="container col-11 col-lg-10 mx-auto mt-5 pt-5 mb-5 pb-5">
-  <button class="bt btn-color-2 mb-4" (click)="goBack()">
+  <button class="bt btn-color-2 mb-4 w-auto px-4 d-inline-flex align-items-center justify-content-center" (click)="goBack()">
     <i class="fa fa-arrow-left me-2"></i> Back to Portfolio
   </button>
 
   <div *ngIf="project" class="row">
-    <div class="col-12 col-lg-6 mb-4">
-      <img [src]="project.src" [alt]="project.name" class="img-fluid rounded shadow w-100">
+    <div class="col-12 col-lg-6 mb-4 d-flex align-items-start">
+      <img [src]="project.src" [alt]="project.name" class="img-fluid rounded shadow-lg w-100" style="object-fit: cover; max-height: 500px;">
     </div>
     
-    <div class="col-12 col-lg-6">
-      <h1 class="fw-bold mb-3">{{ project.name }}</h1>
+    <div class="col-12 col-lg-6 ps-lg-5">
+      <h1 class="fw-bold mb-4 display-5" style="color: #333;">{{ project.name }}</h1>
       
       <div class="mb-4">
-        <span class="fs-5 text-muted">Project Overview</span>
-        <hr class="mt-2 mb-3">
-        <ul class="fs-5">
-          <li *ngFor="let point of project.fullDescription" class="mb-2">{{ point }}</li>
+        <span class="fs-5 text-muted fw-semibold text-uppercase tracking-wider">Project Overview</span>
+        <hr class="mt-2 mb-3 border-secondary opacity-25">
+        <ul class="fs-5 text-secondary" style="line-height: 1.8;">
+          <li *ngFor="let point of project.fullDescription" class="mb-3">{{ point }}</li>
         </ul>
       </div>
 
       <div class="mb-4">
-        <span class="fs-5 text-muted">Technologies Used</span>
-        <hr class="mt-2 mb-3">
-        <div class="d-flex flex-wrap gap-2">
-          <span *ngFor="let tech of project.technologies" class="badge bg-primary fs-6 fw-normal px-3 py-2">
+        <span class="fs-5 text-muted fw-semibold text-uppercase tracking-wider">Technologies Used</span>
+        <hr class="mt-2 mb-3 border-secondary opacity-25">
+        <div class="d-flex flex-wrap gap-2 mt-3">
+          <span *ngFor="let tech of project.technologies" class="badge bg-light text-dark border border-secondary px-3 py-2 fs-6 rounded-pill fw-medium shadow-sm">
             {{ tech }}
           </span>
         </div>
       </div>
 
       <div class="mt-5">
-        <a [href]="project.link" target="_blank" class="bt btn-color-3 d-inline-block">
+        <a [href]="project.link" target="_blank" class="bt btn-color-3 w-auto px-4 d-inline-flex align-items-center justify-content-center text-decoration-none">
           <i class="fab fa-github me-2"></i> View on Github
         </a>
       </div>
