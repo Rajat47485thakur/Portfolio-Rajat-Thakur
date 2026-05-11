@@ -17,7 +17,7 @@ export class ProfileComponent {
   }
 
   openResume() {
-    window.open("./assets/Rajat_Thakur_Resume.pdf");
+    window.open("./assets/Rajat_Thakur_2Y_Experience_Angular_Nodejs_Developer.pdf");
   }
 
   goToLinkedin() {
