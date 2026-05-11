@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ViewportScroller } from "@angular/common";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-links',
@@ -11,13 +12,19 @@ import { ViewportScroller } from "@angular/common";
 export class NavLinksComponent {
   @Output() closeAsideEvent = new EventEmitter<void>();
 
-  constructor(private viewportScroller: ViewportScroller) { }
+  constructor(private viewportScroller: ViewportScroller, private router: Router) { }
 
   protected navItems: string[] = ['About', 'Skill Set', 'Projects', 'Contacts'];
 
   scrollTo(section: string) {
     let elementId = section.toLowerCase().replace(' ', '-');
-    this.viewportScroller.scrollToAnchor(elementId);
+    if (this.router.url !== '/') {
+      this.router.navigate(['/']).then(() => {
+        setTimeout(() => this.viewportScroller.scrollToAnchor(elementId), 100);
+      });
+    } else {
+      this.viewportScroller.scrollToAnchor(elementId);
+    }
   }
 
 
