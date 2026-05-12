@@ -2,9 +2,9 @@
     <div class="all-in">
         <app-header class="app-header" (toggleAsideEvent)="toggleAside()"></app-header>
 
-        <aside class="mobile-aside" [class.open]="isAsideOpen">
-            <div class="aside-header background-color-black">
-                <span class="fs-4 color-white">Menu</span>
+        <aside [ngClass]="{'mobile-aside': true, 'open': isAsideOpen}">
+            <div class="aside-header">
+                <span class="fs-4">Menu</span>
                 <button class="close-btn" (click)="toggleAside()">✖</button>
             </div>
             <ul class="navbar-nav">

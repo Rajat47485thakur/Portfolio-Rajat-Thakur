@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ViewportScroller } from "@angular/common";
+import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [],
+  imports: [ScrollRevealDirective],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })

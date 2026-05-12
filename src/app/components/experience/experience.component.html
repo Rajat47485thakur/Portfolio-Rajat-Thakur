@@ -1,16 +1,21 @@
-<section id="skill-set" class="col-12 col-md-8 col-xl-10 mx-auto">
-  <div class="row">
-    <div class="col-12">
-      <p class="fs-5 text-center">Explore My </p>
-      <h1 class="text-center fw-bold">Skill Set</h1>
+<section id="skill-set" class="container mx-auto py-5">
+  <div class="row mb-5" appScrollReveal>
+    <div class="col-12 text-center">
+      <p class="fs-5 text-muted mb-2 font-outfit">Technologies I work with</p>
+      <h1 class="display-5 fw-bold font-outfit text-gradient">Tech Stack</h1>
     </div>
   </div>
 
-  <div class="experience-items">
-    <div class="experience-slide">
-      @for ( item of getExperience; track item.index ) {
-        <img [ngSrc]="item.src" [alt]="item.name" class="item-img" height="80" width="100" priority>
-      }
+  <div class="glass-card py-4 reveal-up" appScrollReveal>
+    <div class="experience-items">
+      <div class="experience-slide">
+        @for ( item of getExperience; track item.index ) {
+          <div class="tech-icon-wrapper">
+            <img [ngSrc]="item.src" [alt]="item.name" class="item-img" height="60" width="60" priority>
+            <span class="tech-name">{{ item.name }}</span>
+          </div>
+        }
+      </div>
     </div>
   </div>
 </section>

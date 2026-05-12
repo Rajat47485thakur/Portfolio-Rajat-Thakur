@@ -4,10 +4,12 @@ import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { NavLinksComponent } from "./components/shared/nav-links/nav-links.component";
 
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, NavLinksComponent],
+  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent, NavLinksComponent],
   templateUrl: './app.component.html'
 })
 export class AppComponent {

@@ -14,7 +14,7 @@ export class NavLinksComponent {
 
   constructor(private viewportScroller: ViewportScroller, private router: Router) { }
 
-  protected navItems: string[] = ['About', 'Skill Set', 'Projects', 'Contacts'];
+  protected navItems: string[] = ['Home', 'About', 'Skill Set', 'Projects', 'Contacts'];
 
   scrollTo(section: string) {
     let elementId = section.toLowerCase().replace(' ', '-');

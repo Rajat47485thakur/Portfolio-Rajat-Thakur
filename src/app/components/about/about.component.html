@@ -1,63 +1,63 @@
 <section id="about" class="container col-11 col-lg-10 mx-auto">
-  <p class="fs-5 text-center text-muted">Get to know me better</p>
-  <h1 class="fw-bold text-center">About Me</h1>
+  <div appScrollReveal>
+    <p class="fs-5 text-center text-muted mb-2 font-outfit">Get to know me better</p>
+    <h1 class="display-4 fw-bold text-center mb-5 font-outfit text-gradient">About Me</h1>
+  </div>
 
-  <div class="row mt-4 animate-on-scroll" [ngClass]="{ 'in-view': isInView }">
+  <div class="row align-items-center">
     <!-- Profile Image -->
-    <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center mb-4 mb-lg-0">
-      <img class="about-pic img-fluid rounded-5 shadow" 
-           src="./assets/full-rajat-img.jpg" 
-           alt="Rajat's profile image"
-           [ngClass]="{ 'in-view-left': isInView }">
+    <div class="col-12 col-lg-5 mb-5 mb-lg-0 reveal-left" appScrollReveal>
+      <div class="about-img-container position-relative">
+        <div class="glow-bg glow-purple" style="top: 10%; left: 10%;"></div>
+        <img class="img-fluid rounded-4 shadow-lg position-relative z-1 about-pic" 
+             src="./assets/full-rajat-img.jpg" 
+             alt="Rajat's profile image">
+      </div>
     </div>
 
     <!-- Cards and Bio -->
-    <div class="col-12 col-lg-8 d-flex flex-column justify-content-center align-items-center">
-      <div class="row w-100">
+    <div class="col-12 col-lg-7">
+      <div class="row g-4 mb-4">
         <!-- Experience Card -->
-        <div class="col-12 col-md-6 d-flex justify-content-center mb-3" [ngClass]="{ 'in-view': isInView }">
-          <div class="about-card card w-100 border-dark shadow-sm h-100">
-            <div class="card-body text-center">
-              <i class="fa fa-award fa-2x icon mb-3 text-primary"></i>
-              <h3 class="fw-bold about-subtitle">Professional Experience</h3>
-              <p class="card-text">
-                <strong>{{ getExperienceYears() }}</strong> Years of experience architecting and
-                delivering <strong>high-performance web applications</strong>.
-                <br><br>
-                Specialized in modern <strong>Angular (v14-20)</strong> development, <strong>SSR</strong>, and
-                <strong>Node.js</strong> backend integration.
-                <br><br>
-                Proven track record in building scalable, real-time interactive systems.
-              </p>
+        <div class="col-12 col-md-6" appScrollReveal>
+          <div class="glass-card p-4 h-100 text-center">
+            <div class="icon-container mb-3 mx-auto">
+              <i class="fa fa-award fs-3"></i>
             </div>
+            <h3 class="fw-bold fs-4 mb-3 font-outfit">Professional Experience</h3>
+            <p class="text-muted small mb-0">
+              <strong class="text-main">{{ getExperienceYears() }}+ Years</strong> architecting and delivering high-performance web applications.
+              <br><br>
+              Specialized in modern <strong class="text-main">Angular</strong>, SSR, and <strong class="text-main">Node.js</strong> backend integration.
+            </p>
           </div>
         </div>
 
         <!-- Core Expertise Card -->
-        <div class="col-12 col-md-6 d-flex justify-content-center mb-3" [ngClass]="{ 'in-view': isInView }">
-          <div class="about-card card w-100 border-dark shadow-sm h-100">
-            <div class="card-body text-center">
-              <i class="fa fa-laptop-code fa-2x icon mb-3 text-success"></i>
-              <h3 class="fw-bold about-subtitle">Core Expertise</h3>
-              <p class="card-text">
-                <strong>Angular 14–19</strong> for modular UI/UX and responsive dashboards.
-                <br><br>
-                <strong>Node.js, Express, JWT</strong> for secure APIs and real-time features.
-                <br><br>
-                <strong>MongoDB & SQL</strong> for scalable, optimized data models in production apps.
-              </p>
+        <div class="col-12 col-md-6 reveal-delay-1" appScrollReveal>
+          <div class="glass-card p-4 h-100 text-center">
+            <div class="icon-container mb-3 mx-auto" style="background: rgba(16, 185, 129, 0.1); color: var(--accent-emerald);">
+              <i class="fa fa-laptop-code fs-3"></i>
             </div>
+            <h3 class="fw-bold fs-4 mb-3 font-outfit">Core Expertise</h3>
+            <p class="text-muted small mb-0">
+              <strong class="text-main">Angular 14–19</strong> for modular UI/UX.
+              <br><br>
+              <strong class="text-main">Node.js, Express, JWT</strong> for secure APIs.
+              <br><br>
+              <strong class="text-main">MongoDB & SQL</strong> for scalable data models.
+            </p>
           </div>
         </div>
       </div>
 
       <!-- Bio Section -->
-      <div class="w-100 text-center mt-3" #aboutSection>
-        <p class="about-text-section" [ngClass]="{ 'in-view-right': isInView }">
-          I'm <strong>Rajat Thakur</strong>, a Results-driven Software Engineer based in Mohali, India, with
-          <strong>{{ getExperienceYears() }} Years</strong> of experience architecting and delivering high-performance web applications.
-          I specialize in modern <strong>Angular development (v14-20)</strong>, Angular SSR for advanced SEO optimization, and <strong>Node.js</strong> backend integration.
-          My expertise lies in engineering scalable frontend architectures, delivering seamless user experiences, and building real-time interactive systems. Always eager to innovate, I thrive in fast-paced production environments that value continuous learning and product-level engineering.
+      <div class="glass-panel p-4" appScrollReveal>
+        <p class="text-muted mb-0 lh-lg">
+          I'm <strong class="text-main">Rajat Thakur</strong>, a Results-driven Software Engineer based in Mohali, India, with
+          <strong class="text-main">{{ getExperienceYears() }} Years</strong> of experience architecting and delivering high-performance web applications.
+          I specialize in modern <strong class="text-main">Angular development</strong>, Angular SSR for SEO optimization, and <strong class="text-main">Node.js</strong> backend integration.
+          My expertise lies in engineering scalable frontend architectures, delivering seamless user experiences, and building real-time interactive systems. Always eager to innovate, I thrive in fast-paced production environments that value continuous learning.
         </p>
       </div>
     </div>

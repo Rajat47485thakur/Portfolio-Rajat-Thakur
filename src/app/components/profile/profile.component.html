@@ -1,24 +1,45 @@
-<div id="profile" class="container col-12 col-md-8 my-1 mx-auto">
-  <div class="row">
-    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
-      <img src="./assets/profile.png" alt="Profile image" class="rounded-circle img-fluid profile-pic">
-    </div>
-    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
-      <p class="fs-5 text-shadow">Hello, I'm</p>
-      <h1 class="fw-bold text-shadow">Rajat Thakur</h1>
-      <p class="subtitle fs-4 text-shadow">Software Engineer</p>
-      <div class="d-flex justify-content-center mt-4">
-        <button class="bt btn-color-2 me-2" (click)="openResume()">
-          Download CV
-        </button>
-        <button class="bt btn-color-1" (click)="scrollTo('contacts')">
-          Contact Me
-        </button>
+<section id="home" class="container min-vh-100 d-flex align-items-center position-relative py-5">
+  <!-- Glow Effect -->
+  <div class="glow-bg" style="top: 20%; left: 10%;"></div>
+  <div class="glow-bg glow-purple" style="bottom: 20%; right: 10%;"></div>
+
+  <div class="row w-100 align-items-center">
+    <div class="col-md-6 order-md-2 d-flex justify-content-center mb-5 mb-md-0">
+      <div class="profile-img-container" appScrollReveal>
+        <img src="./assets/profile.png" alt="Profile image" class="img-fluid profile-pic">
+        <div class="glow-ring"></div>
       </div>
-      <div class="d-flex justify-content-center mt-3">
-        <i class="fab fa-linkedin fa-3x icon mx-2 pointer" (click)="goToLinkedin()"></i>
-        <i class="fab fa-github fa-3x icon mx-2 pointer" (click)="goToGithub()"></i>
+    </div>
+    
+    <div class="col-md-6 order-md-1 d-flex flex-column align-items-md-start align-items-center text-center text-md-start">
+      <div appScrollReveal>
+        <p class="fs-5 text-muted mb-2 font-outfit">Hello, I'm</p>
+        <h1 class="display-3 fw-bold mb-3 font-outfit text-gradient">Rajat Thakur</h1>
+        <p class="subtitle fs-4 mb-4 text-gradient-emerald">Software Engineer</p>
+        <p class="text-muted mb-5 lead" style="max-width: 500px;">
+          Crafting scalable, high-performance web applications with Angular and modern web technologies.
+        </p>
+        
+        <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-md-start mb-4">
+          <button class="bt" (click)="openResume()">
+            <span>Download CV</span>
+            <i class="fas fa-download ms-2"></i>
+          </button>
+          <button class="bt btn-outline" (click)="scrollTo('contacts')">
+            <span>Contact Me</span>
+            <i class="fas fa-paper-plane ms-2"></i>
+          </button>
+        </div>
+        
+        <div class="social-links d-flex gap-4 mt-2">
+          <a class="social-icon" (click)="goToLinkedin()" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a class="social-icon" (click)="goToGithub()" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgOptimizedImage } from "@angular/common";
+import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
 interface ExperienceItem {
   name: string;
@@ -12,7 +13,8 @@ interface ExperienceItem {
   standalone: true,
   templateUrl: './experience.component.html',
   imports: [
-    NgOptimizedImage
+    NgOptimizedImage,
+    ScrollRevealDirective
   ],
   styleUrl: './experience.component.scss'
 })

@@ -1,17 +1,13 @@
-<div class="container-fluid header-container">
-  <div class="row">
-    <nav class="navbar navbar-expand-lg col-md-8 mx-auto my-1 col-12">
-      <div class="container-fluid">
-        <span class="navbar-brand fs-2 color-white">Rajat Thakur</span>
-        <img src="./assets/menu-2.png" class="navbar-toggler-icon" height="40px" width="40px" alt="Menu"
-          (click)="onToggleClick()" />
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul class="navbar-nav">
-            <app-nav-links />
-          </ul>
-        </div>
-
+<div class="header-container">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <span class="navbar-brand">Rajat Thakur</span>
+      <button class="navbar-toggler border-0 p-0" type="button" (click)="onToggleClick()">
+        <i class="fas fa-bars fs-2 text-main"></i>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <app-nav-links></app-nav-links>
       </div>
-    </nav>
-  </div>
+    </div>
+  </nav>
 </div>

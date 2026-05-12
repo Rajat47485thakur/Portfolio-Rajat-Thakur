@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgClass, NgForOf } from "@angular/common";
 import { ProjectItemComponent } from "./project-item/project-item.component";
 import { Project, ProjectService } from '../../services/project.service';
+import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-projects',
@@ -9,7 +10,8 @@ import { Project, ProjectService } from '../../services/project.service';
   imports: [
     ProjectItemComponent,
     NgForOf,
-    NgClass
+    NgClass,
+    ScrollRevealDirective
   ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'
