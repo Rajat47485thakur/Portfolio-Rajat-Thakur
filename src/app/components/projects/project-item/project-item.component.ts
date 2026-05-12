@@ -1,11 +1,12 @@
-import {Component, Input} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {Project} from '../../../services/project.service';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { Project } from '../../../services/project.service';
 
 @Component({
   selector: 'app-project-item',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './project-item.component.html',
   styleUrl: '../projects.component.scss'
 })

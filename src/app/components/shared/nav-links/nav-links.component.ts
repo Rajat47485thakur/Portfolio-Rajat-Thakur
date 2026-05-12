@@ -23,6 +23,11 @@ export class NavLinksComponent {
   ];
 
   scrollTo(elementId: string) {
+    if (elementId === 'contact') {
+      this.router.navigate(['/contact']);
+      return;
+    }
+
     if (this.router.url !== '/' && this.router.url !== '/home') {
       this.router.navigate(['/']).then(() => {
         setTimeout(() => {

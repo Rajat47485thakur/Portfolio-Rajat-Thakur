@@ -1,64 +1,136 @@
-<section id="contacts" class="container mx-auto py-5 relative">
-  <div class="glow-bg glow-purple" style="top: 0; left: 50%; transform: translateX(-50%);"></div>
+<div class="contact-page min-vh-100 py-5 position-relative overflow-hidden">
+  <!-- Background Accents -->
+  <div class="glow-bg" style="top: -10%; right: -5%;"></div>
+  <div class="glow-bg glow-purple" style="bottom: 0%; left: -10%;"></div>
 
-  <div class="row mb-5" appScrollReveal>
-    <div class="col-12 text-center">
-      <p class="fs-5 text-muted mb-2 font-outfit">Get in Touch</p>
-      <h1 class="display-5 fw-bold font-outfit text-gradient">Contact Me</h1>
-      <p class="text-muted mt-3 max-w-md mx-auto">
-        I'm currently available for freelance work or full-time opportunities. 
-        Whether you have a question or just want to say hi, I'll try my best to get back to you!
-      </p>
+  <div class="container py-5">
+    <div class="row mb-5" appScrollReveal>
+      <div class="col-lg-8 mx-auto text-center">
+        <span class="section-label">Connect</span>
+        <h1 class="display-3 fw-bold font-outfit text-gradient mb-3">Let's Discuss Your Project</h1>
+        <p class="fs-5 text-muted">Ready to transform your ideas into high-performance digital reality? Reach out and let's start a conversation.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-10 col-lg-8 reveal-up" appScrollReveal>
-      <div class="glass-card p-4 p-md-5">
-        <div class="contact-grid">
-          
-          <a [href]="'mailto:' + email" class="contact-item">
-            <div class="contact-icon-wrapper">
-              <i class="fa fa-envelope fs-4"></i>
+    <div class="row g-5">
+      <!-- Contact Info Sidebar -->
+      <div class="col-lg-4" appScrollReveal>
+        <div class="h-100 d-flex flex-column justify-content-center">
+          <div class="contact-info-item" (click)="goToEmail()" style="cursor: pointer;">
+            <div class="contact-icon-box">
+              <i class="fas fa-envelope"></i>
             </div>
-            <div class="contact-info">
-              <h5 class="mb-1 font-outfit text-main">Email</h5>
-              <span class="text-muted small">rajatthakurdev24&#64;gmail.com</span>
+            <div class="info-content">
+              <p class="text-muted small uppercase tracking-widest mb-1">Email Me</p>
+              <h5 class="text-main mb-0 font-outfit">rajatthakur4748&#64;gmail.com</h5>
             </div>
-          </a>
+          </div>
 
-          <a (click)="goToPhone()" class="contact-item">
-            <div class="contact-icon-wrapper">
-              <i class="fas fa-phone fs-4"></i>
+          <div class="contact-info-item" (click)="goToPhone()" style="cursor: pointer;">
+            <div class="contact-icon-box">
+              <i class="fas fa-phone-alt"></i>
             </div>
-            <div class="contact-info">
-              <h5 class="mb-1 font-outfit text-main">Phone</h5>
-              <span class="text-muted small">+91 70186 83789</span>
+            <div class="info-content">
+              <p class="text-muted small uppercase tracking-widest mb-1">Call Me</p>
+              <h5 class="text-main mb-0 font-outfit">+91 95822 94406</h5>
             </div>
-          </a>
+          </div>
 
-          <a (click)="goToWhatsapp()" class="contact-item">
-            <div class="contact-icon-wrapper">
-              <i class="fab fa-whatsapp fs-4"></i>
+          <div class="contact-info-item" (click)="goToWhatsapp()" style="cursor: pointer; border-color: rgba(37, 211, 102, 0.2); background: rgba(37, 211, 102, 0.02);">
+            <div class="contact-icon-box" style="color: #25d366; background: rgba(37, 211, 102, 0.1); border-color: rgba(37, 211, 102, 0.2);">
+              <i class="fab fa-whatsapp"></i>
             </div>
-            <div class="contact-info">
-              <h5 class="mb-1 font-outfit text-main">WhatsApp</h5>
-              <span class="text-muted small">Message Me</span>
+            <div class="info-content">
+              <p class="text-muted small uppercase tracking-widest mb-1">WhatsApp</p>
+              <h5 class="text-main mb-0 font-outfit">Instant Chat</h5>
             </div>
-          </a>
+          </div>
 
-          <a (click)="goToLinkedin()" class="contact-item">
-            <div class="contact-icon-wrapper">
-              <i class="fab fa-linkedin fs-4"></i>
+          <div class="contact-info-item">
+            <div class="contact-icon-box">
+              <i class="fas fa-map-marker-alt"></i>
             </div>
-            <div class="contact-info">
-              <h5 class="mb-1 font-outfit text-main">LinkedIn</h5>
-              <span class="text-muted small">Connect with me</span>
+            <div class="info-content">
+              <p class="text-muted small uppercase tracking-widest mb-1">Location</p>
+              <h5 class="text-main mb-0 font-outfit">New Delhi, India</h5>
             </div>
-          </a>
+          </div>
 
+          <div class="social-links d-flex gap-4 mt-4 px-3">
+            <a (click)="goToLinkedin()" class="social-icon" style="cursor: pointer;"><i class="fab fa-linkedin-in"></i></a>
+            <a (click)="goToGithub()" class="social-icon" style="cursor: pointer;"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="col-lg-8">
+        <div class="contact-form-card" appScrollReveal>
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" *ngIf="!submitSuccess">
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <label class="form-label">Full Name</label>
+                <input type="text" formControlName="fullName" class="form-control" [ngClass]="{'is-invalid': isFieldInvalid('fullName')}" placeholder="John Doe">
+                <div class="error-message" *ngIf="isFieldInvalid('fullName')">Name is required (min 3 chars).</div>
+              </div>
+              
+              <div class="col-md-6 mb-4">
+                <label class="form-label">Subject</label>
+                <input type="text" formControlName="subject" class="form-control" [ngClass]="{'is-invalid': isFieldInvalid('subject')}" placeholder="Project Inquiry">
+                <div class="error-message" *ngIf="isFieldInvalid('subject')">Subject is required.</div>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                <label class="form-label">Email Address</label>
+                <input type="email" formControlName="email" class="form-control" [ngClass]="{'is-invalid': isFieldInvalid('email')}" placeholder="john@example.com">
+                <div class="error-message" *ngIf="isFieldInvalid('email')">Please enter a valid email.</div>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" formControlName="phone" class="form-control" [ngClass]="{'is-invalid': isFieldInvalid('phone')}" placeholder="+91 00000 00000">
+                <div class="error-message" *ngIf="isFieldInvalid('phone')">Please enter a valid phone number.</div>
+              </div>
+
+              <div class="col-12 mb-4">
+                <label class="form-label">Message</label>
+                <textarea formControlName="message" rows="5" class="form-control" [ngClass]="{'is-invalid': isFieldInvalid('message')}" placeholder="Tell me about your project..."></textarea>
+                <div class="error-message" *ngIf="isFieldInvalid('message')">Message is required (min 10 chars).</div>
+              </div>
+            </div>
+
+            <div class="error-message mb-4 text-center" *ngIf="contactForm.errors?.['noContactMethod'] && (contactForm.dirty || contactForm.touched)">
+              At least one contact method (Email or Phone) is required.
+            </div>
+
+            <button type="submit" class="bt w-100 py-3" [disabled]="contactForm.invalid || isSubmitting">
+              <span *ngIf="!isSubmitting">Send Message <i class="fas fa-paper-plane ms-2"></i></span>
+              <span *ngIf="isSubmitting"><i class="fas fa-spinner fa-spin"></i> Processing...</span>
+            </button>
+          </form>
+
+          <!-- Success State -->
+          <div class="text-center py-5" *ngIf="submitSuccess" appScrollReveal>
+            <div class="contact-icon-box mx-auto mb-4" style="width: 80px; height: 80px; font-size: 2rem; background: rgba(16, 185, 129, 0.1); border-color: var(--accent-emerald); color: var(--accent-emerald);">
+              <i class="fas fa-check"></i>
+            </div>
+            <h2 class="fw-bold text-main mb-3">Inquiry Sent Successfully!</h2>
+            <p class="text-muted mb-5">Thank you for reaching out. I will get back to you within 24 hours.</p>
+            
+            <div class="d-flex flex-wrap gap-3 justify-content-center">
+              <button class="bt" (click)="submitSuccess = false">Send Another</button>
+              <button class="bt btn-outline" (click)="openWhatsApp()" *ngIf="showWhatsAppCTA">
+                <i class="fab fa-whatsapp me-2"></i> Instant WhatsApp
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  <!-- Floating CTA for Mobile -->
+  <div class="floating-cta">
+    <button class="whatsapp-btn" (click)="openWhatsApp()" aria-label="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </button>
   </div>
-</section>
+</div>

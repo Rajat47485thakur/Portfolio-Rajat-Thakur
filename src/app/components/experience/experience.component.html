@@ -11,7 +11,7 @@
       <div class="experience-slide">
         @for ( item of getExperience; track item.index ) {
           <div class="tech-icon-wrapper">
-            <img [ngSrc]="item.src" [alt]="item.name" class="item-img" height="60" width="60" priority>
+            <img ngSrc="{{item.src}}" [alt]="item.name" class="item-img" width="60" height="60">
             <span class="tech-name">{{ item.name }}</span>
           </div>
         }

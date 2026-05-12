@@ -1,48 +1,146 @@
-<section class="container col-11 col-lg-10 mx-auto mt-5 pt-5 mb-5 pb-5">
-  <button class="bt btn-outline mb-5 w-auto px-4 d-inline-flex align-items-center justify-content-center" (click)="goBack()">
-    <i class="fa fa-arrow-left me-2"></i> Back to Portfolio
-  </button>
+<div *ngIf="project" class="case-study">
+  
+  <!-- Back Button Overlay -->
+  <div class="container position-relative">
+    <button class="bt btn-outline position-absolute top-0 start-0 mt-4 d-inline-flex align-items-center" (click)="goBack()" style="z-index: 100;">
+      <i class="fa fa-arrow-left me-2"></i> <span>Back to Work</span>
+    </button>
+  </div>
 
-  <div *ngIf="project" class="row align-items-start" appScrollReveal>
-    <div class="col-12 col-lg-6 mb-5">
-      <div class="glass-card p-2 overflow-hidden">
-        <img [src]="project.src" [alt]="project.name" class="img-fluid rounded-3 w-100" style="object-fit: cover; max-height: 600px;">
-      </div>
-    </div>
-    
-    <div class="col-12 col-lg-6 ps-lg-5 reveal-right" appScrollReveal>
-      <h1 class="fw-bold mb-4 display-4 font-outfit text-gradient">{{ project.name }}</h1>
-      
-      <div class="mb-5 glass-panel p-4">
-        <h3 class="fs-5 text-muted fw-semibold text-uppercase font-outfit mb-3">Project Overview</h3>
-        <ul class="fs-5 text-muted list-unstyled" style="line-height: 1.8;">
-          <li *ngFor="let point of project.fullDescription" class="mb-3 d-flex align-items-start">
-            <i class="fas fa-check-circle text-primary mt-1 me-3"></i>
-            <span>{{ point }}</span>
-          </li>
-        </ul>
-      </div>
+  <!-- Hero Header -->
+  <header class="case-study-header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7" appScrollReveal>
+          <span class="section-label">Case Study</span>
+          <h1 class="display-3 fw-bold mb-3 font-outfit text-gradient">{{ project.name }}</h1>
+          <p class="fs-4 text-main mb-4 opacity-75">{{ project.subtitle }}</p>
+          <div class="d-flex flex-wrap gap-2 mb-5">
+            <span *ngFor="let tech of project.technologies" class="tech-badge">{{ tech }}</span>
+          </div>
 
-      <div class="mb-5">
-        <h3 class="fs-5 text-muted fw-semibold text-uppercase font-outfit mb-3">Technologies Used</h3>
-        <div class="d-flex flex-wrap gap-2 mt-3">
-          <span *ngFor="let tech of project.technologies" class="tech-badge">
-            {{ tech }}
-          </span>
+        </div>
+        <div class="col-lg-5 mt-5 mt-lg-0" appScrollReveal class="reveal-right">
+          <div class="mockup-container">
+            <img [src]="project.src" [alt]="project.name" class="img-fluid w-100">
+          </div>
         </div>
       </div>
+    </div>
+  </header>
 
-      <div class="mt-5">
-        <a [href]="project.link" target="_blank" class="bt w-auto px-5 d-inline-flex align-items-center justify-content-center text-decoration-none">
-          <i class="fab fa-github me-2 fs-4"></i> 
-          <span>View Source on Github</span>
-        </a>
+  <!-- Quick Stats -->
+  <section class="container py-5">
+    <div class="row g-4" appScrollReveal>
+      <div class="col-md-4" *ngFor="let stat of project.stats">
+        <div class="stat-card">
+          <i [class]="stat.icon + ' fs-3 text-primary mb-3'"></i>
+          <h3 class="display-6 fw-bold text-main">{{ stat.value }}</h3>
+          <p class="text-muted mb-0 uppercase tracking-wide small">{{ stat.label }}</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div *ngIf="!project" class="text-center my-5 glass-panel p-5">
-    <h2 class="text-gradient">Project not found</h2>
-    <p class="text-muted">The project you are looking for does not exist.</p>
-  </div>
-</section>
+  <!-- Project Overview -->
+  <section class="case-study-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4" appScrollReveal>
+          <span class="section-label">Overview</span>
+          <h2 class="display-5 fw-bold mb-4">The Mission</h2>
+        </div>
+        <div class="col-lg-8" appScrollReveal class="reveal-right">
+          <p class="fs-5 mb-5">{{ project.description }}</p>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <h4 class="text-main fw-bold mb-2">My Role</h4>
+              <p>{{ project.role }}</p>
+            </div>
+            <div class="col-md-6">
+              <h4 class="text-main fw-bold mb-2">Architecture</h4>
+              <p>{{ project.architecture }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features -->
+  <section class="case-study-section bg-black-50">
+    <div class="container">
+      <div class="text-center mb-5" appScrollReveal>
+        <span class="section-label">Capabilities</span>
+        <h2 class="display-5 fw-bold">Key Engineering Features</h2>
+      </div>
+      <div class="row g-4" appScrollReveal>
+        <div class="col-lg-4" *ngFor="let feature of project.features">
+          <div class="feature-item">
+            <div class="d-flex align-items-center mb-4">
+              <div class="icon-box me-3">
+                <i [class]="feature.icon + ' fs-4 text-primary'"></i>
+              </div>
+              <h4 class="mb-0 text-main">{{ feature.title }}</h4>
+            </div>
+            <p class="text-muted mb-0">{{ feature.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenges & Solutions -->
+  <section class="case-study-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4" appScrollReveal>
+          <span class="section-label">Challenges</span>
+          <h2 class="display-5 fw-bold mb-4">Overcoming Complexity</h2>
+          <p class="text-muted">Every high-end project comes with unique engineering hurdles. Here's how I navigated them.</p>
+        </div>
+        <div class="col-lg-8" appScrollReveal class="reveal-right">
+          <div *ngFor="let challenge of project.challenges">
+            <div class="challenge-card">
+              <h5 class="text-main fw-bold mb-3"><i class="fas fa-exclamation-triangle me-2 text-purple"></i> The Problem</h5>
+              <p class="mb-0">{{ challenge.problem }}</p>
+            </div>
+            <div class="solution-card">
+              <h5 class="text-main fw-bold mb-3"><i class="fas fa-check-circle me-2 text-emerald"></i> The Solution</h5>
+              <p class="mb-0">{{ challenge.solution }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final Impact -->
+  <section class="case-study-section mb-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6" appScrollReveal>
+          <span class="section-label">Impact</span>
+          <h2 class="display-5 fw-bold mb-4">Measurable Results</h2>
+          <ul class="impact-list">
+            <li *ngFor="let item of project.impact">{{ item }}</li>
+          </ul>
+        </div>
+        <div class="col-lg-6 mt-5 mt-lg-0" appScrollReveal class="reveal-right">
+          <div class="glass-panel p-5 text-center">
+            <h3 class="display-6 fw-bold text-gradient mb-3">Project Ready?</h3>
+            <p class="mb-4">Interested in a similar high-performance solution for your business?</p>
+            <button class="bt px-5" routerLink="/contact">Let's Discuss</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div *ngIf="!project" class="text-center my-5 py-5">
+  <h2 class="text-gradient">Case Study Not Found</h2>
+  <p class="text-muted">The project details you are looking for might have been moved.</p>
+  <button class="bt mt-4" (click)="goBack()">Back to Portfolio</button>
+</div>

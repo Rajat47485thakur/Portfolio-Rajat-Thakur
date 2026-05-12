@@ -1,28 +1,32 @@
-<div class="glass-card project-card h-100 d-flex flex-column">
+<div class="project-card d-flex flex-column" [routerLink]="['/project', project.id]">
   <div class="project-img-wrapper">
     <img [src]="project.src" class="project-img" [alt]="project.name">
     <div class="project-overlay">
-      <a [routerLink]="['/project', project.id]" class="bt btn-outline view-btn">
-        <span>View Details</span>
-        <i class="fa fa-arrow-right ms-2"></i>
-      </a>
+      <span class="bt btn-sm px-4">View Case Study</span>
+    </div>
+    <div class="project-role-badge">
+      {{ project.role }}
     </div>
   </div>
-  
-  <div class="card-body d-flex flex-column p-4 flex-grow-1">
-    <h3 class="card-title fw-bold mb-3 font-outfit text-main">
-      {{ project.name }}
-    </h3>
-    <p class="card-text flex-grow-1 text-muted mb-4">{{ project.description }}</p>
+
+  <div class="card-body p-4 d-flex flex-column flex-grow-1">
+    <div class="mb-2">
+      <h3 class="h4 fw-bold text-main mb-1 font-outfit">{{ project.name }}</h3>
+      <p class="text-primary small fw-bold tracking-widest uppercase mb-0">{{ project.subtitle }}</p>
+    </div>
     
+    <p class="text-muted small mb-4 line-clamp-2">
+      {{ project.description }}
+    </p>
+
     <div class="mt-auto">
       <div class="d-flex flex-wrap gap-2">
-        @for (technology of project.technologies.slice(0, 4); track technology) {
-          <span class="tech-badge">{{ technology }}</span>
-        }
-        @if (project.technologies.length > 4) {
-          <span class="tech-badge more-badge">+{{project.technologies.length - 4}}</span>
-        }
+        <span *ngFor="let tech of project.technologies.slice(0, 4)" class="tech-badge-sm">
+          {{ tech }}
+        </span>
+        <span *ngIf="project.technologies.length > 4" class="tech-badge-sm opacity-50">
+          +{{ project.technologies.length - 4 }}
+        </span>
       </div>
     </div>
   </div>
