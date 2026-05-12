@@ -1,7 +1,7 @@
 <ul class="navbar-nav">
-  @for (item of navItems; track item) {
-  <li class="nav-item px-3 fs-4">
-    <a class="nav-link" (click)="scrollTo(item.toLowerCase())" (click)="triggerCloseAside()">{{ item }}</a>
+  @for (item of navItems; track item.id) {
+  <li class="nav-item">
+    <a class="nav-link" (click)="scrollTo(item.id); triggerCloseAside()">{{ item.label }}</a>
   </li>
   }
 </ul>

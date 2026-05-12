@@ -1,15 +1,24 @@
-<footer class="footer mt-5 pt-5 pb-3">
-  <div class="container border-top border-dark pt-4">
+<footer class="footer py-5 mt-5">
+  <div class="container pt-5 border-top border-dark-subtle">
     <div class="row align-items-center">
-      <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-        <span class="navbar-brand fs-4 fw-bold font-outfit text-main">Rajat Thakur<span class="text-primary">.</span></span>
+      <!-- Brand -->
+      <div class="col-lg-3 text-center text-lg-start mb-4 mb-lg-0">
+        <span class="navbar-brand fs-3 fw-bold font-outfit text-main">Rajat Thakur<span class="text-primary">.</span></span>
       </div>
       
-      <div class="col-md-4 mb-3 mb-md-0 d-flex justify-content-center">
-        <app-nav-links></app-nav-links>
+      <!-- Nav Links (Direct for better control) -->
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <div class="footer-nav d-flex justify-content-center flex-wrap gap-4">
+          <a (click)="scrollTo('home')" class="footer-link">Home</a>
+          <a (click)="scrollTo('about')" class="footer-link">About</a>
+          <a (click)="scrollTo('experience')" class="footer-link">Skills</a>
+          <a (click)="scrollTo('projects')" class="footer-link">Projects</a>
+          <a (click)="scrollTo('contact')" class="footer-link">Contacts</a>
+        </div>
       </div>
 
-      <div class="col-md-4 text-center text-md-end">
+      <!-- Copyright -->
+      <div class="col-lg-3 text-center text-lg-end">
         <p class="text-muted small mb-0">© {{ getCurrentYear() }} All Rights Reserved.</p>
       </div>
     </div>

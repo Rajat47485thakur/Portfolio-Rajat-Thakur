@@ -14,16 +14,29 @@ export class NavLinksComponent {
 
   constructor(private viewportScroller: ViewportScroller, private router: Router) { }
 
-  protected navItems: string[] = ['Home', 'About', 'Skill Set', 'Projects', 'Contacts'];
+  protected navItems = [
+    { label: 'Home', id: 'home' },
+    { label: 'About', id: 'about' },
+    { label: 'Skills', id: 'experience' },
+    { label: 'Projects', id: 'projects' },
+    { label: 'Contact', id: 'contact' }
+  ];
 
-  scrollTo(section: string) {
-    let elementId = section.toLowerCase().replace(' ', '-');
-    if (this.router.url !== '/') {
+  scrollTo(elementId: string) {
+    if (this.router.url !== '/' && this.router.url !== '/home') {
       this.router.navigate(['/']).then(() => {
-        setTimeout(() => this.viewportScroller.scrollToAnchor(elementId), 100);
+        setTimeout(() => {
+          const element = document.getElementById(elementId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 150);
       });
     } else {
-      this.viewportScroller.scrollToAnchor(elementId);
+      const element = document.getElementById(elementId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }
 

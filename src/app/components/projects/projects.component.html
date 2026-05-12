@@ -8,9 +8,7 @@
 
   <div class="projects-grid">
     @for (project of projects; track project.id) {
-      <div class="project-wrapper" appScrollReveal>
-        <app-project-item [project]="project"></app-project-item>
-      </div>
+      <app-project-item [project]="project" appScrollReveal class="reveal-up"></app-project-item>
     }
   </div>
 </section>
