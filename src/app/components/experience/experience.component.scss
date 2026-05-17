@@ -13,6 +13,7 @@
   position: relative;
   width: 100%;
   display: flex;
+  padding: 20px 0; /* Add vertical padding to prevent hover scale/translate clipping */
 }
 
 .experience-items::before,
@@ -38,7 +39,7 @@
 
 .experience-slide {
   display: inline-flex;
-  animation: slide 30s infinite linear;
+  animation: slide 50s infinite linear;
 }
 
 .experience-slide:hover {
@@ -60,6 +61,8 @@
   min-width: 120px;
 
   &:hover {
+    position: relative;
+    z-index: 3; /* Lift above the side-fade gradients (z-index 2) */
     transform: translateY(-10px) scale(1.05);
     background: rgba(255, 255, 255, 0.05);
     border-color: var(--accent-primary);
