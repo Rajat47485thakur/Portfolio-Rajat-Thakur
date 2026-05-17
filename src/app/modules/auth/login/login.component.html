@@ -44,11 +44,18 @@
           <div class="input-icon-group">
             <i class="fas fa-lock input-icon"></i>
             <input 
-              type="password" 
+              [type]="showPassword ? 'text' : 'password'" 
               class="form-control text-input" 
               placeholder="••••••••"
               formControlName="password"
               [ngClass]="{'is-invalid': loginForm.get('password')?.touched && loginForm.get('password')?.invalid}">
+            <button 
+              type="button" 
+              class="password-toggle-btn" 
+              (click)="togglePasswordVisibility()"
+              aria-label="Toggle Password Visibility">
+              <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </button>
           </div>
         </div>
 
