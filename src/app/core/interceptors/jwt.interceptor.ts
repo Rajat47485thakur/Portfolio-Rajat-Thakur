@@ -3,6 +3,7 @@ import { HttpInterceptorFn, HttpRequest, HttpHandlerFn, HttpEvent, HttpErrorResp
 import { Router } from '@angular/router';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, filter, take, switchMap } from 'rxjs/operators';
+import { API_BASE_URL } from '../config/api.config';
 
 // Subject to manage token refresh queueing
 let isRefreshing = false;
@@ -17,7 +18,7 @@ export const jwtInterceptor: HttpInterceptorFn = (
   const token = localStorage.getItem('accessToken');
   
   // Base server API URL (can be customized via environment profile)
-  const apiBase = 'http://localhost:5000/api';
+  const apiBase = API_BASE_URL;
 
   let authReq = req;
 
@@ -49,7 +50,7 @@ const handle401Error = (
   router: Router
 ): Observable<HttpEvent<unknown>> => {
   const refreshToken = localStorage.getItem('refreshToken');
-  const apiBase = 'http://localhost:5000/api';
+  const apiBase = API_BASE_URL;
 
   if (!refreshToken) {
     // Force log out

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_BASE_URL } from '../config/api.config';
 
 export interface Blog {
   _id?: string;
@@ -20,7 +21,7 @@ export interface Blog {
   providedIn: 'root'
 })
 export class BlogService {
-  private readonly apiBase = 'http://localhost:5000/api/blogs';
+  private readonly apiBase = `${API_BASE_URL}/blogs`;
 
   constructor(private http: HttpClient) {}
 
