@@ -1,0 +1,215 @@
+.dashboard-wrapper {
+  padding-bottom: 2rem;
+}
+
+// ==========================================
+// STATS CARD GRIDS
+// ==========================================
+.glass-card {
+  background: rgba(13, 17, 23, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  .stat-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.25rem;
+    font-size: 1.25rem;
+  }
+
+  .stat-data {
+    display: flex;
+    flex-direction: column;
+
+    .stat-number {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      color: #94a3b8;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+  }
+
+  // Highlight Borders
+  &.border-unread {
+    border-left: 4px solid #f43f5e;
+    &.glowing-card {
+      box-shadow: 0 0 15px rgba(244, 63, 94, 0.1);
+    }
+  }
+  &.border-blue { border-left: 4px solid #3b82f6; }
+  &.border-accent { border-left: 4px solid #00f2fe; }
+  &.border-emerald { border-left: 4px solid #10b981; }
+
+  // Background icons
+  .unread-bg { background: rgba(244, 63, 94, 0.1); }
+  .text-unread { color: #f43f5e; }
+
+  .blue-bg { background: rgba(59, 130, 246, 0.1); }
+  .text-blue { color: #3b82f6; }
+
+  .accent-bg { background: rgba(0, 242, 254, 0.1); }
+  .text-accent { color: #00f2fe; }
+
+  .emerald-bg { background: rgba(16, 185, 129, 0.1); }
+  .text-emerald { color: #10b981; }
+}
+
+// ==========================================
+// MESSAGE LISTING
+// ==========================================
+.view-all-link {
+  color: #00f2fe;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+.message-list-scroller {
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+.message-row {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+
+  &.unread-row {
+    background: rgba(244, 63, 94, 0.02);
+    border-color: rgba(244, 63, 94, 0.15);
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.btn-dark-custom {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+}
+
+.btn-accent-custom {
+  background: rgba(0, 242, 254, 0.1);
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  color: #00f2fe;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(0, 242, 254, 0.2);
+    color: #ffffff;
+    box-shadow: 0 0 8px rgba(0, 242, 254, 0.2);
+  }
+}
+
+.btn-danger-custom {
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ffffff;
+  }
+}
+
+// ==========================================
+// SHORTCUT OPERATORS
+// ==========================================
+.shortcut-btn {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  i {
+    font-size: 1.5rem;
+  }
+
+  &.border-blue:hover {
+    border-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.03);
+  }
+
+  &.border-accent:hover {
+    border-color: #00f2fe;
+    background: rgba(0, 242, 254, 0.03);
+  }
+
+  &.border-emerald:hover {
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.03);
+  }
+
+  &:hover {
+    transform: translateX(4px);
+  }
+
+  .shortcut-details {
+    display: flex;
+    flex-direction: column;
+
+    .shortcut-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .shortcut-desc {
+      font-size: 0.8rem;
+    }
+  }
+}

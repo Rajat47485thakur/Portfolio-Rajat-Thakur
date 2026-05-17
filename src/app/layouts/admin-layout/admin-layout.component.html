@@ -1,0 +1,55 @@
+<div class="admin-wrapper">
+  <!-- Sidebar Container -->
+  <aside class="admin-sidebar" [ngClass]="{'collapsed': !isSidebarOpen}">
+    <div class="sidebar-brand">
+      <div class="brand-logo" *ngIf="isSidebarOpen">
+        <span class="text-white font-outfit fw-bold">Rajat</span>
+        <span class="text-accent font-outfit fw-bold">.CMS</span>
+      </div>
+      <button class="sidebar-toggle" (click)="toggleSidebar()">
+        <i class="fas" [ngClass]="isSidebarOpen ? 'fa-angle-double-left' : 'fa-bars'"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar-menu">
+      <ul>
+        <li *ngFor="let link of sidebarLinks" routerLinkActive="active">
+          <a [routerLink]="['/admin', link.path]" [title]="link.label">
+            <i [class]="link.icon" class="menu-icon"></i>
+            <span class="menu-text" *ngIf="isSidebarOpen">{{ link.label }}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a routerLink="/" class="btn-public" title="Public Website">
+        <i class="fas fa-external-link-alt"></i>
+        <span class="btn-text" *ngIf="isSidebarOpen">Live Portfolio</span>
+      </a>
+      <button (click)="logout()" class="btn-logout" title="Log Out">
+        <i class="fas fa-sign-out-alt"></i>
+        <span class="btn-text" *ngIf="isSidebarOpen">Sign Out</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Viewport Section -->
+  <div class="admin-main">
+    <header class="admin-topbar">
+      <div class="topbar-left">
+        <h4 class="m-0 text-white font-outfit fw-semibold">Portfolio Control CMS</h4>
+      </div>
+      <div class="topbar-right">
+        <div class="user-badge">
+          <span class="status-indicator"></span>
+          <span class="user-role font-outfit text-white">Administrator</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

@@ -23,6 +23,15 @@ export class ProjectsComponent implements OnInit {
   constructor(private projectService: ProjectService) {}
 
   ngOnInit(): void {
-    this.projects = this.projectService.getProjects();
+    this.projectService.getProjects().subscribe({
+      next: (projs) => {
+        this.projects = projs.map(p => ({
+          ...p,
+          name: p.title,
+          id: p.slug // Map slug to id dynamically for details URL routing
+        }));
+      },
+      error: (err) => console.error('Failed to load projects list', err)
+    });
   }
 }

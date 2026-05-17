@@ -1,0 +1,61 @@
+<div class="resume-manager-wrapper">
+  <div class="row g-4">
+    <!-- Upload Section -->
+    <div class="col-lg-4">
+      <div class="glass-card p-4">
+        <h5 class="text-white font-outfit fw-bold mb-4"><i class="fas fa-file-upload text-accent me-2"></i> Upload PDF Resume</h5>
+        
+        <div class="alert alert-success-custom mb-3" *ngIf="successMessage">
+          <i class="fas fa-check-circle me-2"></i> {{ successMessage }}
+        </div>
+        
+        <div class="alert alert-danger-custom mb-3" *ngIf="errorMessage">
+          <i class="fas fa-exclamation-triangle me-2"></i> {{ errorMessage }}
+        </div>
+
+        <div class="upload-dropzone p-4 text-center mb-4" [ngClass]="{'has-file': selectedFile}">
+          <i class="far fa-file-pdf display-4 text-muted mb-3"></i>
+          <p class="text-white small mb-2">Drag and drop your ATS-optimized PDF resume here</p>
+          <span class="text-muted small block mb-3">or</span>
+          <label class="btn btn-sm btn-dark-custom mb-0">
+            Browse File
+            <input type="file" (change)="onFileSelected($event)" accept=".pdf" style="display: none;">
+          </label>
+          <div class="selected-file-badge mt-3 p-2 rounded" *ngIf="selectedFile">
+            <i class="fas fa-paperclip text-accent me-2"></i>
+            <span class="text-white small">{{ selectedFile.name }}</span>
+          </div>
+        </div>
+
+        <button 
+          class="btn-submit font-outfit" 
+          [disabled]="!selectedFile || isUploading"
+          (click)="uploadResume()">
+          <span *ngIf="!isUploading"><i class="fas fa-cloud-upload-alt me-2"></i> Upload to CDN</span>
+          <span *ngIf="isUploading" class="d-flex align-items-center justify-content-center">
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            Syncing PDF...
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Preview Section -->
+    <div class="col-lg-8">
+      <div class="glass-card p-4 h-100 min-h-600">
+        <h5 class="text-white font-outfit fw-bold mb-4"><i class="far fa-eye text-accent me-2"></i> Interactive Resume Preview</h5>
+        
+        <!-- Empty Preview -->
+        <div *ngIf="!resumeUrl" class="text-center py-5 text-muted">
+          <i class="fas fa-file-signature display-3 mb-3"></i>
+          <p>No active resume PDF found in settings. Upload one to configure.</p>
+        </div>
+
+        <!-- PDF embed -->
+        <div class="pdf-iframe-container" *ngIf="safeResumeUrl">
+          <iframe [src]="safeResumeUrl" width="100%" height="550px" frameborder="0"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,125 @@
+<div class="skills-cms-wrapper">
+  
+  <div class="d-flex justify-content-between align-items-center mb-5">
+    <h4 class="text-white font-outfit fw-bold m-0"><i class="fas fa-graduation-cap text-accent me-2"></i> Tech Capabilities Catalog Manager</h4>
+    <button class="bt btn-sm btn-accent-custom" *ngIf="!showForm" (click)="showForm = true">
+      <i class="fas fa-plus me-1"></i> Add Tech Skill
+    </button>
+  </div>
+
+  <!-- CRUD Form panel -->
+  <div class="glass-card p-4 mb-5" *ngIf="showForm">
+    <h5 class="text-white font-outfit fw-bold mb-4">
+      {{ isEditing ? 'Edit Tech Skill' : 'Add New Tech Skill' }}
+    </h5>
+
+    <form [formGroup]="skillForm" (ngSubmit)="submitSkill()">
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <label class="form-label text-white">Skill Name</label>
+          <input type="text" class="form-control text-input" placeholder="e.g. Angular 20 / TypeScript" formControlName="name">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label text-white">Tech Category</label>
+          <select class="form-control text-input" formControlName="category">
+            <option value="Frontend">Frontend</option>
+            <option value="Backend">Backend</option>
+            <option value="Tools">Tools / Utilities</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row g-3 mb-4">
+        <div class="col-md-8">
+          <label class="form-label text-white">Icon Local Asset Path</label>
+          <input type="text" class="form-control text-input" placeholder="./assets/technologies/angular.png" formControlName="icon">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label text-white">Sort / Ordering Rank</label>
+          <input type="number" class="form-control text-input" formControlName="ordering">
+        </div>
+      </div>
+
+      <!-- Range Slider -->
+      <div class="form-group mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <label class="form-label text-white m-0">Proficiency Competency Scale</label>
+          <span class="badge bg-dark text-accent border border-secondary fs-6">{{ skillForm.get('proficiency')?.value }}%</span>
+        </div>
+        <input type="range" class="form-range custom-range" min="0" max="100" formControlName="proficiency">
+      </div>
+
+      <div class="d-flex gap-2">
+        <button type="submit" class="btn-submit font-outfit px-4" [disabled]="skillForm.invalid">
+          {{ isEditing ? 'Save Changes' : 'Create Skill Card' }}
+        </button>
+        <button type="button" class="btn btn-dark-custom px-4" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Capabilities list grid -->
+  <div class="glass-card p-4" *ngIf="!isLoading">
+    <div class="table-responsive">
+      <table class="table table-dark-custom m-0">
+        <thead>
+          <tr>
+            <th>Icon</th>
+            <th>Capability Name</th>
+            <th>Category</th>
+            <th>Proficiency Level</th>
+            <th>Sorting Rank</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="skills.length === 0">
+            <td colspan="6" class="text-center py-5 text-muted">No capability elements configured yet.</td>
+          </tr>
+          <tr *ngFor="let skill of skills">
+            <td>
+              <div class="skill-icon-frame">
+                <img [src]="skill.icon" class="img-fluid" style="max-height: 28px;">
+              </div>
+            </td>
+            <td class="text-white fw-semibold">{{ skill.name }}</td>
+            <td>
+              <span class="badge" [ngClass]="{
+                'bg-info text-dark': skill.category === 'Frontend',
+                'bg-purple': skill.category === 'Backend',
+                'bg-secondary': skill.category === 'Tools'
+              }">
+                {{ skill.category }}
+              </span>
+            </td>
+            <td>
+              <div class="d-flex align-items-center gap-2">
+                <div class="progress flex-grow-1" style="height: 6px; background: rgba(255,255,255,0.05);">
+                  <div class="progress-bar bg-accent" role="progressbar" [style.width]="skill.proficiency + '%'"></div>
+                </div>
+                <span class="small fw-bold text-accent">{{ skill.proficiency }}%</span>
+              </div>
+            </td>
+            <td class="fw-bold text-muted">#{{ skill.ordering || 1 }}</td>
+            <td class="text-end">
+              <div class="d-inline-flex gap-2">
+                <button class="btn btn-sm btn-accent-custom" (click)="editSkill(skill)" title="Edit">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-sm btn-danger-custom" (click)="deleteSkill(skill._id)" title="Delete">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="text-center py-5 text-muted">
+    <div class="spinner-border text-info mb-3" role="status"></div>
+    <p>Loading capabilities catalog...</p>
+  </div>
+</div>

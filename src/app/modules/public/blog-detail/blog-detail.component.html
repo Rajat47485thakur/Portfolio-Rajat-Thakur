@@ -1,0 +1,72 @@
+<div class="blog-detail-wrapper py-5">
+  <div class="container py-5">
+    
+    <!-- Go Back Navigation -->
+    <div class="mb-4" appScrollReveal>
+      <button class="bt btn-outline d-inline-flex align-items-center" (click)="goBack()">
+        <i class="fa fa-arrow-left me-2"></i> <span>Back to Articles</span>
+      </button>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="glass-article p-5 text-center">
+      <div class="spinner-border text-info mb-3" role="status"></div>
+      <p class="text-muted">Loading dynamic engineering log...</p>
+    </div>
+
+    <!-- Not Found State -->
+    <div *ngIf="!isLoading && !blog" class="glass-article p-5 text-center" appScrollReveal>
+      <i class="fas fa-exclamation-circle display-4 text-danger mb-3"></i>
+      <h3 class="text-white fw-bold">Article Not Found</h3>
+      <p class="text-muted">This log might have been drafted, deleted, or moved by the author.</p>
+      <button class="bt btn-outline mt-3" routerLink="/blogs">Browse All Articles</button>
+    </div>
+
+    <!-- Blog Content Container -->
+    <article *ngIf="!isLoading && blog" class="glass-article" appScrollReveal>
+      
+      <!-- Article Header -->
+      <header class="article-header mb-4">
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <span *ngFor="let tag of blog.tags" class="article-tag">#{{ tag }}</span>
+        </div>
+        <h1 class="display-4 fw-bold font-outfit text-gradient mb-3">{{ blog.title }}</h1>
+        <div class="article-meta text-muted d-flex align-items-center gap-3">
+          <span><i class="far fa-calendar-alt me-1"></i> {{ blog.createdAt | date:'longDate' }}</span>
+          <span>•</span>
+          <span><i class="far fa-user me-1"></i> Rajat Thakur</span>
+        </div>
+      </header>
+
+      <!-- Featured Image -->
+      <div class="featured-image-box mb-5" *ngIf="blog.featuredImage">
+        <img [src]="blog.featuredImage" [alt]="blog.title" class="img-fluid w-100 rounded-3">
+      </div>
+
+      <!-- Article Body -->
+      <section class="article-body font-inter leading-relaxed">
+        <div class="content-markdown text-white">
+          {{ blog.content }}
+        </div>
+      </section>
+
+      <!-- Article Footer -->
+      <footer class="article-footer mt-5 pt-4 border-top border-secondary-subtle">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <h5 class="text-white font-outfit mb-2">Share this Article</h5>
+            <div class="d-flex gap-2">
+              <a href="https://linkedin.com" target="_blank" class="social-share-btn linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://twitter.com" target="_blank" class="social-share-btn twitter" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+          <div class="col-md-6 text-md-end mt-4 mt-md-0">
+            <button class="bt" routerLink="/contact">Have a Question? Let's Talk</button>
+          </div>
+        </div>
+      </footer>
+
+    </article>
+
+  </div>
+</div>

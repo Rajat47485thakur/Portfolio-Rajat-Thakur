@@ -1,0 +1,155 @@
+.login-wrapper {
+  min-height: 100vh;
+  background-color: #080b11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+// ==========================================
+// GLOW BACKGROUND
+// ==========================================
+.glow-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1;
+
+  .glow-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px);
+    opacity: 0.15;
+
+    &.blue {
+      width: 400px;
+      height: 400px;
+      background: #0072ff;
+      top: -100px;
+      right: -100px;
+    }
+
+    &.cyan {
+      width: 500px;
+      height: 500px;
+      background: #00f2fe;
+      bottom: -150px;
+      left: -150px;
+    }
+  }
+}
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem;
+  position: relative;
+  z-index: 5;
+}
+
+.back-link {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #00f2fe;
+  }
+}
+
+// ==========================================
+// GLASS CARD
+// ==========================================
+.login-card {
+  background: rgba(13, 17, 23, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+
+  .text-accent {
+    color: #00f2fe;
+  }
+}
+
+.alert-danger-custom {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.input-icon-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .input-icon {
+    position: absolute;
+    left: 1.25rem;
+    color: #475569;
+    font-size: 1rem;
+  }
+
+  .text-input {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 0.75rem 1rem 0.75rem 3rem;
+    color: #ffffff;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+
+    &:focus {
+      background: rgba(15, 23, 42, 0.85);
+      border-color: #00f2fe;
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.15);
+    }
+
+    &.is-invalid {
+      border-color: #ef4444;
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.15);
+    }
+  }
+}
+
+// ==========================================
+// SUBMIT BUTTON
+// ==========================================
+.btn-submit {
+  width: 100%;
+  background: linear-gradient(135deg, #0072ff, #00f2fe);
+  border: none;
+  color: #ffffff;
+  padding: 0.85rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.3);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}

@@ -25,16 +25,24 @@ export class ProjectDetailComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.project = this.projectService.getProjectById(id);
-      if (this.project) {
-        // Set dynamic meta and title for case studies
-        this.seoService.generateTags({
-          title: `${this.project.name} | Rajat Thakur Case Study`,
-          description: this.project.description,
-          keywords: `Rajat Thakur, ${this.project.name}, Case Study, ${this.project.role}, ${this.project.technologies.join(', ')}`,
-          slug: `project/${this.project.id}`
-        });
-      }
+      this.projectService.getProjectById(id).subscribe({
+        next: (proj) => {
+          this.project = {
+            ...proj,
+            name: proj.title // Dynamic backward-compatibility mapping
+          };
+          if (this.project) {
+            // Set dynamic meta and title for case studies
+            this.seoService.generateTags({
+              title: `${this.project.title} | Rajat Thakur Case Study`,
+              description: this.project.description,
+              keywords: `Rajat Thakur, ${this.project.title}, Case Study, ${this.project.role}, ${this.project.technologies.join(', ')}`,
+              slug: `project/${id}`
+            });
+          }
+        },
+        error: (err) => console.error('Failed to load project details', err)
+      });
     }
   }
 

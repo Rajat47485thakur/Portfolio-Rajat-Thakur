@@ -1,0 +1,57 @@
+.contacts-cms-wrapper {
+  padding-bottom: 2rem;
+}
+
+.min-h-600 {
+  min-height: 600px;
+}
+
+// ==========================================
+// INBOX SPLIT CARDS
+// ==========================================
+.inbox-list {
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+.inbox-card {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  &.unread-card {
+    background: rgba(239, 68, 68, 0.02);
+    border-color: rgba(239, 68, 68, 0.1);
+    border-left: 3px solid #ef4444;
+  }
+
+  &.active-card {
+    background: rgba(0, 242, 254, 0.05);
+    border-color: #00f2fe;
+    border-left: 3px solid #00f2fe;
+  }
+}
+
+.excerpt-text {
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+// ==========================================
+// ACTIVE READER
+// ==========================================
+.reader-body {
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  min-height: 300px;
+}
+
+.whitespace-pre-line {
+  white-space: pre-line;
+}

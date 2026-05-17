@@ -1,0 +1,239 @@
+<div class="projects-cms-wrapper">
+  
+  <div class="d-flex justify-content-between align-items-center mb-5">
+    <h4 class="text-white font-outfit fw-bold m-0"><i class="fas fa-tasks text-accent me-2"></i> Dynamic Projects Case Studies Manager</h4>
+    <button class="bt btn-sm btn-accent-custom" *ngIf="!showForm" (click)="showForm = true">
+      <i class="fas fa-plus me-1"></i> Add Project Study
+    </button>
+  </div>
+
+  <!-- CRUD Form panel -->
+  <div class="glass-card p-4 mb-5" *ngIf="showForm">
+    <h5 class="text-white font-outfit fw-bold mb-4">
+      {{ isEditing ? 'Edit Project Study' : 'Add New Project Study' }}
+    </h5>
+
+    <form [formGroup]="projectForm" (ngSubmit)="submitProject()">
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <label class="form-label text-white">Project Case Title</label>
+          <input type="text" class="form-control text-input" placeholder="e.g. Vehicle Rental Marketplace" formControlName="title">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label text-white">Subtitle / Catchphrase</label>
+          <input type="text" class="form-control text-input" placeholder="e.g. Enterprise Booking Engine & SSR Platform" formControlName="subtitle">
+        </div>
+      </div>
+
+      <div class="row g-3 mb-4">
+        <div class="col-md-4">
+          <label class="form-label text-white">Engineering Role</label>
+          <input type="text" class="form-control text-input" placeholder="e.g. Lead Frontend Engineer" formControlName="role">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label text-white">Resource Category</label>
+          <select class="form-control text-input" formControlName="category">
+            <option value="Web Application">Web Application</option>
+            <option value="Admin Portal">Admin Portal</option>
+            <option value="Mobile App">Mobile App</option>
+            <option value="System Tool">System Tool</option>
+          </select>
+        </div>
+        <div class="col-md-4 d-flex align-items-end">
+          <div class="form-check mb-2">
+            <input type="checkbox" class="form-check-input" id="featCheck" formControlName="featured">
+            <label class="form-check-label text-muted ms-2 small" for="featCheck">Highlight on Homepage (Featured)</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3 mb-4">
+        <div class="col-md-8">
+          <label class="form-label text-white">Github / Live Link URL</label>
+          <input type="text" class="form-control text-input" placeholder="https://github.com/..." formControlName="link">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label text-white">Project Screenshot Image</label>
+          <input type="file" class="form-control text-input" (change)="onFileSelected($event)" accept="image/*">
+        </div>
+      </div>
+
+      <div class="form-group mb-4">
+        <label class="form-label text-white">Core Technologies (Comma-separated list)</label>
+        <input type="text" class="form-control text-input" placeholder="Angular 20, RxJS, SSR, Stripe" formControlName="technologiesRaw">
+      </div>
+
+      <div class="form-group mb-4">
+        <label class="form-label text-white">Overview & Description</label>
+        <textarea class="form-control text-input" rows="3" placeholder="Engineered a scalable Angular-based rental marketplace..." formControlName="description"></textarea>
+      </div>
+
+      <div class="form-group mb-4">
+        <label class="form-label text-white">System Architecture Abstraction</label>
+        <input type="text" class="form-control text-input" placeholder="e.g. Event-Driven SSR Architecture with Angular Standalone..." formControlName="architecture">
+      </div>
+
+      <!-- Nested Stats Array -->
+      <div class="mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <label class="form-label text-white m-0">Project Analytics Cards (Stats)</label>
+          <button type="button" class="btn btn-sm btn-dark-custom" (click)="addStat()">
+            <i class="fas fa-plus me-1"></i> Add Stat
+          </button>
+        </div>
+        <div formArrayName="stats" class="row g-2">
+          <div *ngFor="let stat of stats.controls; let i=index" [formGroupName]="i" class="col-md-4">
+            <div class="stat-form-card p-3 rounded mb-2 border border-secondary bg-black-50 position-relative">
+              <button type="button" class="close-card-btn" (click)="removeStat(i)">✖</button>
+              <div class="mb-2">
+                <input type="text" class="form-control form-control-sm text-input" placeholder="Label (e.g. SEO Score)" formControlName="label">
+              </div>
+              <div class="mb-2">
+                <input type="text" class="form-control form-control-sm text-input" placeholder="Value (e.g. 98/100)" formControlName="value">
+              </div>
+              <div>
+                <input type="text" class="form-control form-control-sm text-input" placeholder="Icon (e.g. fas fa-search)" formControlName="icon">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nested Features Array -->
+      <div class="mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <label class="form-label text-white m-0">Key Technical Features</label>
+          <button type="button" class="btn btn-sm btn-dark-custom" (click)="addFeature()">
+            <i class="fas fa-plus me-1"></i> Add Feature
+          </button>
+        </div>
+        <div formArrayName="features" class="row g-2">
+          <div *ngFor="let feat of features.controls; let i=index" [formGroupName]="i" class="col-md-6">
+            <div class="feature-form-card p-3 rounded mb-2 border border-secondary bg-black-50 position-relative">
+              <button type="button" class="close-card-btn" (click)="removeFeature(i)">✖</button>
+              <div class="mb-2">
+                <input type="text" class="form-control form-control-sm text-input" placeholder="Feature Title" formControlName="title">
+              </div>
+              <div class="mb-2">
+                <input type="text" class="form-control form-control-sm text-input" placeholder="Icon Class (e.g. fas fa-globe)" formControlName="icon">
+              </div>
+              <div>
+                <textarea class="form-control form-control-sm text-input" rows="2" placeholder="Feature Description" formControlName="description"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nested Challenges Array -->
+      <div class="mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <label class="form-label text-white m-0">Engineering Challenges & Solutions</label>
+          <button type="button" class="btn btn-sm btn-dark-custom" (click)="addChallenge()">
+            <i class="fas fa-plus me-1"></i> Add Challenge
+          </button>
+        </div>
+        <div formArrayName="challenges">
+          <div *ngFor="let chall of challenges.controls; let i=index" [formGroupName]="i" class="challenge-form-card p-3 rounded mb-3 border border-secondary bg-black-50 position-relative">
+            <button type="button" class="close-card-btn" (click)="removeChallenge(i)">✖</button>
+            <div class="mb-2">
+              <label class="form-label text-purple small fw-semibold">The Problem Context</label>
+              <textarea class="form-control form-control-sm text-input" rows="2" placeholder="What was the complex issue?" formControlName="problem"></textarea>
+            </div>
+            <div>
+              <label class="form-label text-emerald small fw-semibold">The Engineering Solution</label>
+              <textarea class="form-control form-control-sm text-input" rows="2" placeholder="How did you solve it?" formControlName="solution"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-4">
+        <label class="form-label text-white">Measurable Impact & Results (One per line)</label>
+        <textarea class="form-control text-input" rows="3" placeholder="Boosted overall booking conversion rates by 35%...&#10;Reduced initial page load time by 60%..." formControlName="impactRaw"></textarea>
+      </div>
+
+      <div class="row g-3 mb-5 border-top border-secondary pt-4">
+        <div class="col-md-6">
+          <label class="form-label text-white">SEO Custom Title Override</label>
+          <input type="text" class="form-control text-input" placeholder="Leave empty to auto-generate" formControlName="seoTitle">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label text-white">SEO Custom Meta Description</label>
+          <input type="text" class="form-control text-input" placeholder="Leave empty to auto-generate" formControlName="seoDescription">
+        </div>
+      </div>
+
+      <div class="d-flex gap-2">
+        <button type="submit" class="btn-submit font-outfit px-4" [disabled]="projectForm.invalid">
+          {{ isEditing ? 'Save Changes' : 'Publish Project Study' }}
+        </button>
+        <button type="button" class="btn btn-dark-custom px-4" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Timelines items lists -->
+  <div class="glass-card p-4" *ngIf="!isLoading">
+    <div class="table-responsive">
+      <table class="table table-dark-custom m-0">
+        <thead>
+          <tr>
+            <th>Screenshot</th>
+            <th>Project Title</th>
+            <th>Role</th>
+            <th>Category</th>
+            <th>Featured</th>
+            <th>Technologies</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="projects.length === 0">
+            <td colspan="7" class="text-center py-5 text-muted">No dynamic project studies compiled yet.</td>
+          </tr>
+          <tr *ngFor="let proj of projects">
+            <td>
+              <div class="table-img-wrapper">
+                <img [src]="proj.src || './assets/technologies/angular.png'" class="img-fluid rounded" style="max-height: 40px;">
+              </div>
+            </td>
+            <td class="text-white fw-semibold">{{ proj.title }}</td>
+            <td>{{ proj.role }}</td>
+            <td>
+              <span class="badge bg-dark border border-secondary text-white">{{ proj.category }}</span>
+            </td>
+            <td>
+              <span class="badge" [ngClass]="proj.featured ? 'bg-success' : 'bg-secondary'">
+                {{ proj.featured ? 'Yes' : 'No' }}
+              </span>
+            </td>
+            <td>
+              <div class="d-flex flex-wrap gap-1 max-w-200">
+                <span class="badge bg-dark text-accent border border-secondary" *ngFor="let tech of proj.technologies">
+                  {{ tech }}
+                </span>
+              </div>
+            </td>
+            <td class="text-end">
+              <div class="d-inline-flex gap-2">
+                <button class="btn btn-sm btn-accent-custom" (click)="editProject(proj)" title="Edit">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-sm btn-danger-custom" (click)="deleteProject(proj._id)" title="Delete">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="text-center py-5 text-muted">
+    <div class="spinner-border text-info mb-3" role="status"></div>
+    <p>Loading project studies...</p>
+  </div>
+</div>

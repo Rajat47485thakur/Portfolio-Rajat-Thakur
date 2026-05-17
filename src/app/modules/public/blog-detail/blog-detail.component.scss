@@ -1,0 +1,136 @@
+.blog-detail-wrapper {
+  min-height: 100vh;
+  background-color: #0b0f19;
+  font-family: 'Inter', sans-serif;
+}
+
+// ==========================================
+// GLASS CARD ARTICLE
+// ==========================================
+.glass-article {
+  background: rgba(13, 17, 23, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.article-tag {
+  color: #00f2fe;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+}
+
+.featured-image-box {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  img {
+    max-height: 450px;
+    object-fit: cover;
+  }
+}
+
+// ==========================================
+// ARTICLE BODY TYPOGRAPHY
+// ==========================================
+.article-body {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  code {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    color: #f43f5e;
+    font-size: 0.9em;
+  }
+
+  pre {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+
+    code {
+      background: transparent;
+      padding: 0;
+      color: #cbd5e1;
+      font-size: 0.95em;
+    }
+  }
+
+  ul, ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+// ==========================================
+// SHARE BUTTONS
+// ==========================================
+.social-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+
+  &:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  &.linkedin:hover {
+    background: #0077b5;
+    border-color: #0077b5;
+  }
+
+  &.twitter:hover {
+    background: #1da1f2;
+    border-color: #1da1f2;
+  }
+}

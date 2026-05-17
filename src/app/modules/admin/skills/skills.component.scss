@@ -1,0 +1,104 @@
+.skills-cms-wrapper {
+  padding-bottom: 2rem;
+}
+
+// ==========================================
+// FORM CONTROLS
+// ==========================================
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.text-input {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+
+  &:focus {
+    background: rgba(15, 23, 42, 0.85);
+    border-color: #00f2fe;
+    box-shadow: 0 0 8px rgba(0, 242, 254, 0.15);
+  }
+}
+
+// ==========================================
+// CUSTOM RANGE SLIDER
+// ==========================================
+.custom-range {
+  &::-webkit-slider-runnable-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    height: 6px;
+  }
+  
+  &::-webkit-slider-thumb {
+    background: #00f2fe;
+    border: none;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    margin-top: -5px;
+    box-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+  }
+}
+
+.progress-bar.bg-accent {
+  background-color: #00f2fe;
+  box-shadow: 0 0 8px rgba(0, 242, 254, 0.4);
+}
+
+.bg-purple {
+  background-color: #a78bfa;
+  color: #000000;
+}
+
+// ==========================================
+// TABLE STYLING
+// ==========================================
+.table-dark-custom {
+  background: transparent;
+  color: #cbd5e1;
+
+  th {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 1rem;
+    vertical-align: middle;
+    font-size: 0.95rem;
+    background: transparent;
+  }
+
+  tbody tr {
+    transition: background-color 0.2s ease;
+    &:hover {
+      background: rgba(255, 255, 255, 0.01);
+    }
+  }
+}
+
+.skill-icon-frame {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+}

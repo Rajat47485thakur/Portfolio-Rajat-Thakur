@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractContro
 import { RouterModule } from '@angular/router';
 import { ContactService } from '../../services/contact.service';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-contact',
@@ -44,9 +45,9 @@ export class ContactComponent implements OnInit {
 
     this.isSubmitting = true;
     try {
-      const result = await this.contactService.sendInquiry(this.contactForm.value);
+      const result = await firstValueFrom(this.contactService.sendInquiry(this.contactForm.value));
       this.submitSuccess = true;
-      if (result.method === 'both') {
+      if (result && result.method === 'both') {
         this.showWhatsAppCTA = true;
       }
       this.contactForm.reset();

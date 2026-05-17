@@ -1,0 +1,104 @@
+<div class="contacts-cms-wrapper">
+  
+  <div class="mb-5">
+    <h4 class="text-white font-outfit fw-bold m-0"><i class="fas fa-inbox text-accent me-2"></i> Client Communications Inbox</h4>
+    <p class="text-muted small m-0">Review operational logs and incoming inquiries from the contact forms.</p>
+  </div>
+
+  <div class="row g-4" *ngIf="!isLoading">
+    <!-- Messages list -->
+    <div class="col-lg-5">
+      <div class="glass-card p-3 h-100 min-h-600 overflow-hidden d-flex flex-column">
+        <h5 class="text-white font-outfit fw-bold mb-3 px-2">Inbox Catalog</h5>
+        
+        <div *ngIf="messages.length === 0" class="text-center py-5 text-muted flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+          <i class="far fa-folder-open display-4 mb-3"></i>
+          <p>Your inbox is empty.</p>
+        </div>
+
+        <div class="inbox-list flex-grow-1" *ngIf="messages.length > 0">
+          <div 
+            *ngFor="let msg of messages"
+            class="inbox-card p-3 mb-2 rounded"
+            [ngClass]="{
+              'unread-card': msg.status === 'unread',
+              'active-card': selectedMessage?._id === msg._id
+            }"
+            (click)="selectMessage(msg)">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="sender-name text-white font-outfit fw-semibold">{{ msg.fullName }}</span>
+              <span class="sender-time text-muted small">{{ msg.createdAt | date:'shortDate' }}</span>
+            </div>
+            <h6 class="subject-text font-outfit text-white mb-2">{{ msg.subject }}</h6>
+            <p class="excerpt-text text-muted mb-0 small">{{ msg.message | slice:0:80 }}...</p>
+            <div class="status-indicators mt-2">
+              <span class="badge" [ngClass]="{
+                'bg-danger': msg.status === 'unread',
+                'bg-success': msg.status === 'read',
+                'bg-info text-dark': msg.status === 'replied'
+              }">
+                {{ msg.status }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Message Reader -->
+    <div class="col-lg-7">
+      <div class="glass-card p-4 h-100 min-h-600 d-flex flex-column">
+        <!-- Empty Reader State -->
+        <div *ngIf="!selectedMessage" class="text-center py-5 text-muted flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+          <i class="fas fa-envelope-open display-3 text-muted mb-3"></i>
+          <h5 class="text-white font-outfit fw-bold">Select an Article</h5>
+          <p>Click on any message in the inbox to view full metadata details and perform actions.</p>
+        </div>
+
+        <!-- Message Body -->
+        <div *ngIf="selectedMessage" class="flex-grow-1 d-flex flex-column">
+          <div class="reader-header pb-3 mb-4 border-bottom border-secondary">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div>
+                <h4 class="text-white font-outfit fw-bold mb-1">{{ selectedMessage.subject }}</h4>
+                <div class="sender-details text-muted small">
+                  <span>From: <strong class="text-white">{{ selectedMessage.fullName }}</strong> &lt;{{ selectedMessage.email }}&gt;</span>
+                </div>
+              </div>
+              <span class="badge bg-dark border border-secondary text-accent">{{ selectedMessage.createdAt | date:'medium' }}</span>
+            </div>
+            <div class="d-flex gap-2">
+              <span class="badge bg-secondary">Phone: {{ selectedMessage.phone || 'Not Provided' }}</span>
+            </div>
+          </div>
+
+          <div class="reader-body flex-grow-1 p-3 rounded mb-4">
+            <h6 class="text-white font-outfit small uppercase tracking-wide mb-2 opacity-50">Message Body</h6>
+            <p class="text-white leading-relaxed whitespace-pre-line">{{ selectedMessage.message }}</p>
+          </div>
+
+          <div class="reader-actions pt-3 border-top border-secondary d-flex gap-2 justify-content-end">
+            <a 
+              [href]="'mailto:' + selectedMessage.email + '?subject=Re: ' + selectedMessage.subject"
+              (click)="markAsReplied(selectedMessage._id)"
+              class="btn btn-sm btn-accent-custom text-decoration-none px-3 py-2">
+              <i class="fas fa-reply me-1"></i> Compose Reply
+            </a>
+            <button class="btn btn-sm btn-dark-custom px-3 py-2" *ngIf="selectedMessage.status === 'unread'" (click)="markAsRead(selectedMessage._id)">
+              <i class="fas fa-check me-1"></i> Mark Read
+            </button>
+            <button class="btn btn-sm btn-danger-custom px-3 py-2" (click)="deleteMessage(selectedMessage._id)">
+              <i class="fas fa-trash-alt me-1"></i> Delete Inscription
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="text-center py-5 text-muted">
+    <div class="spinner-border text-info mb-3" role="status"></div>
+    <p>Loading inbox archives...</p>
+  </div>
+</div>

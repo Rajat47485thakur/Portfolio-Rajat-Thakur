@@ -1,0 +1,95 @@
+<div class="settings-cms-wrapper">
+  
+  <div class="mb-5">
+    <h4 class="text-white font-outfit fw-bold m-0"><i class="fas fa-sliders-h text-accent me-2"></i> System Configuration & Branding Controls</h4>
+    <p class="text-muted small m-0">Synchronize corporate contact coordinates, social hooks, and search engine optimization (SEO) configurations.</p>
+  </div>
+
+  <div class="alert alert-success-custom mb-4" *ngIf="successMessage">
+    <i class="fas fa-check-circle me-2"></i> {{ successMessage }}
+  </div>
+  
+  <div class="alert alert-danger-custom mb-4" *ngIf="errorMessage">
+    <i class="fas fa-exclamation-triangle me-2"></i> {{ errorMessage }}
+  </div>
+
+  <div class="row g-4" *ngIf="!isLoading">
+    <!-- Corporate Identity & Social links Form -->
+    <div class="col-lg-6">
+      <div class="glass-card p-4 h-100">
+        <h5 class="text-white font-outfit fw-bold mb-4"><i class="fas fa-id-card text-accent me-2"></i> Contact & Social Profiles</h5>
+        
+        <form [formGroup]="settingsForm" (ngSubmit)="submitSettings()">
+          <div class="form-group mb-4">
+            <label class="form-label text-white">Contact Email Address</label>
+            <input type="email" class="form-control text-input" formControlName="email">
+          </div>
+
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <label class="form-label text-white">Active Phone (Redirection Target)</label>
+              <input type="text" class="form-control text-input" formControlName="phone" placeholder="7018683789">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label text-white">WhatsApp Target ID</label>
+              <input type="text" class="form-control text-input" formControlName="whatsapp" placeholder="917018683789">
+            </div>
+          </div>
+
+          <div class="form-group mb-4">
+            <label class="form-label text-white">GitHub Account Link</label>
+            <input type="text" class="form-control text-input" formControlName="githubUrl">
+          </div>
+
+          <div class="form-group mb-4">
+            <label class="form-label text-white">LinkedIn Account Link</label>
+            <input type="text" class="form-control text-input" formControlName="linkedinUrl">
+          </div>
+
+          <div class="form-group mb-5">
+            <label class="form-label text-white">Twitter / X Account Link</label>
+            <input type="text" class="form-control text-input" formControlName="twitterUrl">
+          </div>
+
+          <button type="submit" class="btn-submit font-outfit px-4" [disabled]="settingsForm.invalid">
+            Save Branding Profile
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Global SEO Parameters Form -->
+    <div class="col-lg-6">
+      <div class="glass-card p-4 h-100">
+        <h5 class="text-white font-outfit fw-bold mb-4"><i class="fas fa-search-dollar text-accent me-2"></i> Site-Wide SEO Catalog</h5>
+        
+        <form [formGroup]="seoForm" (ngSubmit)="submitSEO()">
+          <div class="form-group mb-4">
+            <label class="form-label text-white">Meta Title Template (Homepage Title)</label>
+            <input type="text" class="form-control text-input" formControlName="globalTitle">
+          </div>
+
+          <div class="form-group mb-4">
+            <label class="form-label text-white">Meta Description Statement</label>
+            <textarea class="form-control text-input" rows="4" formControlName="globalDescription"></textarea>
+          </div>
+
+          <div class="form-group mb-5">
+            <label class="form-label text-white">Global Meta Search Keywords (Comma-separated)</label>
+            <textarea class="form-control text-input" rows="3" formControlName="keywordsRaw"></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit font-outfit px-4" [disabled]="seoForm.invalid">
+            Sync Search Attributes
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="text-center py-5 text-muted">
+    <div class="spinner-border text-info mb-3" role="status"></div>
+    <p>Loading configurations data...</p>
+  </div>
+</div>

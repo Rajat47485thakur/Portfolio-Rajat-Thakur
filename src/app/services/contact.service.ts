@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 export interface ContactForm {
   fullName: string;
@@ -12,32 +14,13 @@ export interface ContactForm {
   providedIn: 'root'
 })
 export class ContactService {
-  private readonly BUSINESS_PHONE = '917018683789'; // Business phone number
-  private readonly BUSINESS_EMAIL = 'rajatthakurdev24@gmail.com';
+  private readonly apiBase = 'http://localhost:5000/api';
+  private readonly BUSINESS_PHONE = '917018683789';
 
-  async sendInquiry(data: ContactForm): Promise<{ success: boolean; method: 'email' | 'whatsapp' | 'both' }> {
-    let method: 'email' | 'whatsapp' | 'both' = 'email';
+  constructor(private http: HttpClient) {}
 
-    if (data.email && data.phone) {
-      method = 'both';
-      await this.sendEmail(data);
-      // We'll return and let the component handle the WhatsApp CTA
-    } else if (data.email) {
-      method = 'email';
-      await this.sendEmail(data);
-    } else if (data.phone) {
-      method = 'whatsapp';
-      this.redirectToWhatsApp(data);
-    }
-
-    return { success: true, method };
-  }
-
-  private async sendEmail(data: ContactForm) {
-    console.log('Sending email to', this.BUSINESS_EMAIL, data);
-    // Integrate EmailJS here:
-    // emailjs.send('service_id', 'template_id', data, 'user_id');
-    return new Promise(resolve => setTimeout(resolve, 1500)); // Simulate API call
+  sendInquiry(data: ContactForm): Observable<any> {
+    return this.http.post<any>(`${this.apiBase}/contacts`, data);
   }
 
   redirectToWhatsApp(data: ContactForm) {

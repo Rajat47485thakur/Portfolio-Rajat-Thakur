@@ -1,17 +1,34 @@
 import { Injectable, Inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Title, Meta } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
+import { Observable } from 'rxjs';
+
+export interface SEOData {
+  _id?: string;
+  globalTitle: string;
+  globalDescription: string;
+  keywords: string[];
+  canonicalUrl: string;
+  openGraphImage?: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class SeoService {
+  private readonly apiBase = 'http://localhost:5000/api/seo';
 
   constructor(
+    private http: HttpClient,
     private titleService: Title,
     private metaService: Meta,
     @Inject(DOCUMENT) private document: Document
   ) { }
+
+  getGlobalSEO(): Observable<SEOData> {
+    return this.http.get<SEOData>(this.apiBase);
+  }
 
   generateTags(config: {
     title: string;
@@ -27,7 +44,7 @@ export class SeoService {
     this.metaService.updateTag({ name: 'description', content: config.description });
     
     const keywordsVal = config.keywords || 
-      'Angular Developer, Software Engineer, Angular SSR, Node.js Developer, WebSockets, RxJS, Enterprise Dashboards, Web Development, Frontend Architect';
+      'Rajat Thakur, Angular Developer, Software Engineer, Angular SSR, Node.js Developer, WebSockets, RxJS, Enterprise Dashboards, Web Development, Frontend Architect';
     this.metaService.updateTag({ name: 'keywords', content: keywordsVal });
 
     // Open Graph / Facebook Meta Tags

@@ -1,0 +1,62 @@
+.resume-manager-wrapper {
+  padding-bottom: 2rem;
+}
+
+.min-h-600 {
+  min-height: 600px;
+}
+
+// ==========================================
+// DROPZONE STYLING
+// ==========================================
+.upload-dropzone {
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.01);
+  transition: all 0.3s ease;
+
+  &.has-file {
+    border-color: #00f2fe;
+    background: rgba(0, 242, 254, 0.02);
+  }
+
+  &:hover {
+    border-color: rgba(0, 242, 254, 0.3);
+  }
+}
+
+.selected-file-badge {
+  background: rgba(0, 242, 254, 0.05);
+  border: 1px solid rgba(0, 242, 254, 0.15);
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+}
+
+.alert-success-custom {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #a7f3d0;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.alert-danger-custom {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+// ==========================================
+// PREVIEW IFRAME
+// ==========================================
+.pdf-iframe-container {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #0f172a;
+}
