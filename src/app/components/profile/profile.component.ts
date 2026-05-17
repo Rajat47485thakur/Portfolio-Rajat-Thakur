@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ViewportScroller, NgOptimizedImage } from "@angular/common";
+import { Router } from '@angular/router';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
 @Component({
@@ -11,10 +12,17 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
 })
 export class ProfileComponent {
 
-  constructor(private viewportScroller: ViewportScroller) { }
+  constructor(
+    private viewportScroller: ViewportScroller,
+    private router: Router
+  ) { }
 
   scrollTo(section: string) {
     this.viewportScroller.scrollToAnchor(section);
+  }
+
+  navigateToContact() {
+    this.router.navigate(['/contact']);
   }
 
   openResume() {

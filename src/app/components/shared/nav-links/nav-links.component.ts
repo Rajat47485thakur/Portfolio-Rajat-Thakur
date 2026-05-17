@@ -1,52 +1,56 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { ViewportScroller } from "@angular/common";
+import { ViewportScroller } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-links',
   standalone: true,
-  imports: [],
   templateUrl: './nav-links.component.html',
-  styleUrl: './nav-links.component.scss'
+  styleUrls: ['./nav-links.component.scss']
 })
 export class NavLinksComponent {
   @Output() closeAsideEvent = new EventEmitter<void>();
 
-  constructor(private viewportScroller: ViewportScroller, private router: Router) { }
-
   protected navItems = [
     { label: 'Home', id: 'home' },
     { label: 'About', id: 'about' },
-    { label: 'Skills', id: 'experience' },
+    { label: 'Expertise', id: 'expertise' },
+    { label: 'Experience', id: 'timeline' },
+    { label: 'Skills', id: 'skill-set' },
     { label: 'Projects', id: 'projects' },
     { label: 'Contact', id: 'contact' }
   ];
 
-  scrollTo(elementId: string) {
+  constructor(
+    private viewportScroller: ViewportScroller,
+    private router: Router
+  ) {}
+
+  scrollTo(elementId: string): void {
     if (elementId === 'contact') {
-      this.router.navigate(['/contact']);
+      if (this.router.url === '/contact') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        this.router.navigate(['/contact']).then(() => {
+          window.scrollTo({ top: 0 });
+        });
+      }
       return;
     }
-
-    if (this.router.url !== '/' && this.router.url !== '/home') {
+    
+    // Check if current route is not home page
+    if (this.router.url !== '/' && !this.router.url.startsWith('/#')) {
       this.router.navigate(['/']).then(() => {
         setTimeout(() => {
-          const element = document.getElementById(elementId);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
+          this.viewportScroller.scrollToAnchor(elementId);
         }, 150);
       });
     } else {
-      const element = document.getElementById(elementId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      this.viewportScroller.scrollToAnchor(elementId);
     }
   }
 
-
-  triggerCloseAside() {
+  triggerCloseAside(): void {
     this.closeAsideEvent.emit();
   }
 }

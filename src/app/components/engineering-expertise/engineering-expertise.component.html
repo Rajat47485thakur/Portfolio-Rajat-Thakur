@@ -1,0 +1,40 @@
+<section id="expertise" class="container col-11 col-lg-10 mx-auto py-5">
+  <!-- Section Title -->
+  <div class="row mb-5" appScrollReveal>
+    <div class="col-12 text-center">
+      <p class="section-label mb-2">Capabilities</p>
+      <h1 class="display-3 fw-bold font-outfit text-gradient mb-3">Engineering Expertise</h1>
+      <p class="fs-5 text-muted max-w-2xl mx-auto">
+        Beyond simple code templates, I architect production-grade features built for scale, speed, and absolute reliability.
+      </p>
+    </div>
+  </div>
+
+  <!-- Cards Grid -->
+  <div class="row g-4 justify-content-center reveal-up" appScrollReveal>
+    @for (item of expertiseList; track item.title) {
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="expertise-card h-100 d-flex flex-column">
+          <!-- Card Header -->
+          <div class="d-flex align-items-center mb-3">
+            <div class="icon-box me-3">
+              <i [class]="item.icon + ' fs-4 text-primary'"></i>
+            </div>
+            <div>
+              <h4 class="mb-1 text-main font-outfit fs-5">{{ item.title }}</h4>
+              <p class="text-primary small uppercase tracking-wider mb-0 font-outfit opacity-75" style="font-size: 0.7rem;">{{ item.subtitle }}</p>
+            </div>
+          </div>
+          <!-- Card Body -->
+          <p class="text-muted small flex-grow-1 mb-4" style="line-height: 1.6;">{{ item.description }}</p>
+          <!-- Card Footer - Tech Badges -->
+          <div class="d-flex flex-wrap gap-2 mt-auto">
+            @for (tech of item.techs; track tech) {
+              <span class="tech-badge-sm">{{ tech }}</span>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>

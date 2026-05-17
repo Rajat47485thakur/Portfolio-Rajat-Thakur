@@ -12,8 +12,8 @@ export interface ContactForm {
   providedIn: 'root'
 })
 export class ContactService {
-  private readonly BUSINESS_PHONE = '919582294406'; // Example phone number
-  private readonly BUSINESS_EMAIL = 'rajatthakur@example.com';
+  private readonly BUSINESS_PHONE = '917018683789'; // Business phone number
+  private readonly BUSINESS_EMAIL = 'rajatthakurdev24@gmail.com';
 
   async sendInquiry(data: ContactForm): Promise<{ success: boolean; method: 'email' | 'whatsapp' | 'both' }> {
     let method: 'email' | 'whatsapp' | 'both' = 'email';

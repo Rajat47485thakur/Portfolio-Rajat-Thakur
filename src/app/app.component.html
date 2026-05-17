@@ -1,20 +1,16 @@
-<div class="parent">
-    <div class="all-in">
-        <app-header class="app-header" (toggleAsideEvent)="toggleAside()"></app-header>
+<app-header class="app-header" (toggleAsideEvent)="toggleAside()"></app-header>
 
-        <aside [ngClass]="{'mobile-aside': true, 'open': isAsideOpen}">
-            <div class="aside-header">
-                <span class="fs-4">Menu</span>
-                <button class="close-btn" (click)="toggleAside()">✖</button>
-            </div>
-            <ul class="navbar-nav">
-                <app-nav-links (closeAsideEvent)="closeAside()"></app-nav-links>
-            </ul>
-        </aside>
+<aside [ngClass]="{'mobile-aside': true, 'open': isAsideOpen}">
+    <div class="aside-header">
+        <span class="fs-4">Menu</span>
+        <button class="close-btn" (click)="toggleAside()">✖</button>
+    </div>
+    <ul class="navbar-nav">
+        <app-nav-links (closeAsideEvent)="closeAside()"></app-nav-links>
+    </ul>
+</aside>
 
-    </div>
-    <div class="full_slide_down">
-        <router-outlet></router-outlet>
-        <app-footer />
-    </div>
+<div class="full_slide_down">
+    <router-outlet></router-outlet>
+    <app-footer />
 </div>

@@ -1,11 +1,16 @@
 .profile-img-container {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 220px;
+  height: 220px;
   display: flex;
   justify-content: center;
   align-items: center;
   animation: float 6s ease-in-out infinite;
+
+  @media (min-width: 576px) {
+    width: 280px;
+    height: 280px;
+  }
 
   @media (min-width: 768px) {
     width: 400px;
@@ -68,6 +73,15 @@
   text-transform: uppercase;
   font-weight: 600;
   margin-top: -0.5rem;
+  font-size: 0.85rem !important;
+
+  @media (min-width: 576px) {
+    font-size: 1rem !important;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1.25rem !important;
+  }
 }
 
 .reveal-up {

@@ -1,0 +1,52 @@
+<section id="timeline" class="container col-11 col-lg-10 mx-auto py-5">
+  <!-- Section Title -->
+  <div class="row mb-5" appScrollReveal>
+    <div class="col-12 text-center">
+      <p class="section-label mb-2">History</p>
+      <h1 class="display-3 fw-bold font-outfit text-gradient mb-3">Professional Experience</h1>
+      <p class="fs-5 text-muted max-w-2xl mx-auto">
+        A track record of engineering scalable backend modules, building complex admin controllers, and refactoring performance flows.
+      </p>
+    </div>
+  </div>
+
+  <!-- Timeline Flow Container -->
+  <div class="timeline-container position-relative reveal-up" appScrollReveal>
+    <!-- Central Flow Line -->
+    <div class="timeline-line"></div>
+
+    @for (item of milestones; track item.company; let index = $index) {
+      <div class="timeline-item d-flex flex-column flex-md-row justify-content-between mb-5 position-relative">
+        
+        <!-- Custom Briefcase Timeline Dot -->
+        <div class="timeline-dot">
+          <i class="fas fa-briefcase"></i>
+        </div>
+
+        <!-- Left Node - Title and Period -->
+        <div class="timeline-info col-12 col-md-5 text-md-end mb-3 mb-md-0 pe-md-5 ps-md-3">
+          <h3 class="fw-bold text-main font-outfit fs-4 mb-1">{{ item.role }}</h3>
+          <h4 class="text-primary fw-bold font-outfit fs-5 mb-3">{{ item.company }}</h4>
+          <span class="badge-date">{{ item.period }}</span>
+        </div>
+
+        <!-- Right Node - Metrics & Achievements Panel -->
+        <div class="timeline-content col-12 col-md-6 ps-md-5 pe-md-3">
+          <div class="glass-panel p-4 border-dark-subtle">
+            <ul class="achievement-list mb-4">
+              @for (bullet of item.highlights; track bullet) {
+                <li class="text-muted small mb-3" style="line-height: 1.6;">{{ bullet }}</li>
+              }
+            </ul>
+            <div class="d-flex flex-wrap gap-2">
+              @for (skill of item.skills; track skill) {
+                <span class="tech-badge">{{ skill }}</span>
+              }
+            </div>
+          </div>
+        </div>
+
+      </div>
+    }
+  </div>
+</section>

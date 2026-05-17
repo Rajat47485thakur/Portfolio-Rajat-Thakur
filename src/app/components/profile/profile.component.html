@@ -1,44 +1,93 @@
-<section id="home" class="container min-vh-100 d-flex align-items-center position-relative py-5">
-  <!-- Glow Effect -->
-  <div class="glow-bg" style="top: 20%; left: 10%;"></div>
-  <div class="glow-bg glow-purple" style="bottom: 20%; right: 10%;"></div>
+<section id="home" class="container min-vh-100 d-flex flex-column justify-content-center align-items-center position-relative py-5">
+  <!-- Glow Accents -->
+  <div class="glow-bg" style="top: 15%; left: 5%;"></div>
+  <div class="glow-bg glow-purple" style="bottom: 15%; right: 5%;"></div>
 
+  <!-- Primary Hero Row -->
   <div class="row w-100 align-items-center">
+    <!-- Profile Image Column -->
     <div class="col-md-6 order-md-2 d-flex justify-content-center mb-5 mb-md-0">
       <div class="profile-img-container" appScrollReveal>
-        <img ngSrc="assets/profile.png" alt="Profile image" class="img-fluid profile-pic" width="400" height="400" priority>
+        <img ngSrc="assets/profile.png" alt="Rajat Thakur - Software Engineer" class="img-fluid profile-pic" width="400" height="400" priority>
         <div class="glow-ring"></div>
       </div>
     </div>
     
+    <!-- Positioning & Headline Column -->
     <div class="col-md-6 order-md-1 d-flex flex-column align-items-md-start align-items-center text-center text-md-start">
       <div appScrollReveal>
         <p class="fs-5 text-muted mb-2 font-outfit">Hello, I'm</p>
         <h1 class="display-3 fw-bold mb-3 font-outfit text-gradient">Rajat Thakur</h1>
-        <p class="subtitle fs-4 mb-4 text-gradient-emerald">Software Engineer</p>
-        <p class="text-muted mb-5 lead" style="max-width: 500px;">
-          Crafting scalable, high-performance web applications with Angular and modern web technologies.
+        <p class="subtitle fs-4 mb-4 text-gradient-emerald">Software Engineer | Angular & Node.js Specialist</p>
+        <p class="text-muted mb-5 lead" style="max-width: 530px;">
+          Building scalable, SEO-optimized, and real-time enterprise web applications using modern Angular (v14-20), SSR, Node.js, and WebSockets.
         </p>
         
-        <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-md-start mb-4">
+        <!-- CTA Action Buttons -->
+        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-md-start mb-4">
           <button class="bt" (click)="openResume()">
-            <span>Download CV</span>
-            <i class="fas fa-download ms-2"></i>
+            <span>Download Resume</span>
+            <i class="fas fa-file-download ms-2"></i>
           </button>
-          <button class="bt btn-outline" (click)="scrollTo('contacts')">
+          <button class="bt btn-outline" (click)="navigateToContact()">
             <span>Contact Me</span>
             <i class="fas fa-paper-plane ms-2"></i>
           </button>
         </div>
         
-        <div class="social-links d-flex gap-4 mt-2">
-          <a class="social-icon" (click)="goToLinkedin()" aria-label="LinkedIn">
+        <!-- Professional Social Profiles -->
+        <div class="social-links d-flex gap-4 mt-2 justify-content-center justify-content-md-start">
+          <a class="social-icon" (click)="goToLinkedin()" aria-label="LinkedIn" style="cursor: pointer;">
             <i class="fab fa-linkedin-in"></i>
           </a>
-          <a class="social-icon" (click)="goToGithub()" aria-label="GitHub">
+          <a class="social-icon" (click)="goToGithub()" aria-label="GitHub" style="cursor: pointer;">
             <i class="fab fa-github"></i>
           </a>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- High-Impact Engineering Metrics Grid -->
+  <div class="row mt-5 w-100 g-4 justify-content-center reveal-up reveal-delay-1" appScrollReveal>
+    <!-- Metric 1 -->
+    <div class="col-6 col-lg-3">
+      <div class="glass-card p-4 text-center h-100 border-dark-subtle">
+        <div class="d-flex justify-content-center align-items-center mb-2">
+          <i class="fas fa-server text-primary fs-4 me-2"></i>
+          <h3 class="display-6 fw-bold text-main mb-0 font-outfit">30+</h3>
+        </div>
+        <p class="text-muted small uppercase tracking-wider mb-0">REST APIs Integrated</p>
+      </div>
+    </div>
+    <!-- Metric 2 -->
+    <div class="col-6 col-lg-3">
+      <div class="glass-card p-4 text-center h-100 border-dark-subtle">
+        <div class="d-flex justify-content-center align-items-center mb-2">
+          <i class="fas fa-bolt text-purple fs-4 me-2"></i>
+          <h3 class="display-6 fw-bold text-main mb-0 font-outfit">60%</h3>
+        </div>
+        <p class="text-muted small uppercase tracking-wider mb-0">Bundle Size Reduction</p>
+      </div>
+    </div>
+    <!-- Metric 3 -->
+    <div class="col-6 col-lg-3">
+      <div class="glass-card p-4 text-center h-100 border-dark-subtle">
+        <div class="d-flex justify-content-center align-items-center mb-2">
+          <i class="fas fa-user-shield text-emerald fs-4 me-2"></i>
+          <h3 class="display-6 fw-bold text-main mb-0 font-outfit">90%</h3>
+        </div>
+        <p class="text-muted small uppercase tracking-wider mb-0">Security Incidents Blocked</p>
+      </div>
+    </div>
+    <!-- Metric 4 -->
+    <div class="col-6 col-lg-3">
+      <div class="glass-card p-4 text-center h-100 border-dark-subtle">
+        <div class="d-flex justify-content-center align-items-center mb-2">
+          <i class="fas fa-sync text-primary fs-4 me-2"></i>
+          <h3 class="display-6 fw-bold text-main mb-0 font-outfit">&lt; 2s</h3>
+        </div>
+        <p class="text-muted small uppercase tracking-wider mb-0">Booking Latency Engine</p>
       </div>
     </div>
   </div>

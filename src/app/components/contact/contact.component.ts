@@ -18,8 +18,8 @@ export class ContactComponent implements OnInit {
   submitSuccess = false;
   showWhatsAppCTA = false;
 
-  readonly email = 'rajatthakur4748@gmail.com';
-  readonly phone = '+919582294406';
+  readonly email = 'rajatthakurdev24@gmail.com';
+  readonly phone = '+917018683789';
 
   constructor(private fb: FormBuilder, private contactService: ContactService) {}
 

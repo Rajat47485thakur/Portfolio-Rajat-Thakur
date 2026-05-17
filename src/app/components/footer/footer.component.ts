@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, ViewportScroller } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -9,23 +10,36 @@ import { CommonModule } from '@angular/common';
 })
 export class FooterComponent {
 
+  constructor(
+    private viewportScroller: ViewportScroller,
+    private router: Router
+  ) {}
+
   getCurrentYear() {
     return new Date().getFullYear();
   }
 
   scrollTo(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
+    if (id === 'contact') {
+      if (this.router.url === '/contact') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        this.router.navigate(['/contact']).then(() => {
+          window.scrollTo({ top: 0 });
+        });
+      }
+      return;
+    }
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
+    // Check if current route is not home page
+    if (this.router.url !== '/' && !this.router.url.startsWith('/#')) {
+      this.router.navigate(['/']).then(() => {
+        setTimeout(() => {
+          this.viewportScroller.scrollToAnchor(id);
+        }, 150);
       });
+    } else {
+      this.viewportScroller.scrollToAnchor(id);
     }
   }
 }
