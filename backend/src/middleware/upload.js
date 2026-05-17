@@ -45,17 +45,17 @@ const cloudinaryStorage = new CloudinaryStorage({
   }
 });
 
-// Hybrid storage engine that channels PDFs to disk, and images to Cloudinary
+// Hybrid storage engine that channels PDFs to disk in development, and to Cloudinary in production
 const hybridStorage = {
   _handleFile: (req, file, cb) => {
-    if (file.mimetype === 'application/pdf' || file.fieldname === 'resumePdf') {
+    if ((file.mimetype === 'application/pdf' || file.fieldname === 'resumePdf') && process.env.NODE_ENV !== 'production') {
       localDiskStorage._handleFile(req, file, cb);
     } else {
       cloudinaryStorage._handleFile(req, file, cb);
     }
   },
   _removeFile: (req, file, cb) => {
-    if (file.mimetype === 'application/pdf' || file.fieldname === 'resumePdf') {
+    if ((file.mimetype === 'application/pdf' || file.fieldname === 'resumePdf') && process.env.NODE_ENV !== 'production') {
       localDiskStorage._removeFile(req, file, cb);
     } else {
       cloudinaryStorage._removeFile(req, file, cb);

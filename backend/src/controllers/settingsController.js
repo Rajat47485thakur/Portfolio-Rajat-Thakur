@@ -79,7 +79,9 @@ exports.updateSettings = async (req, res, next) => {
       }
 
       // Save new PDF path
-      if (file.filename) {
+      if (file.path && file.path.startsWith('http')) {
+        settingsData.resumePdfUrl = file.path;
+      } else if (file.filename) {
         settingsData.resumePdfUrl = `${req.protocol}://${req.get('host')}/uploads/resumes/${file.filename}`;
       } else {
         settingsData.resumePdfUrl = file.path;
