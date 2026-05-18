@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/core/config/api.config.ts"],
+  "sourcesContent": ["import { isDevMode } from '@angular/core';\r\n\r\n// Automatically toggles API Base URL between local development server and live production server\r\nexport const API_BASE_URL = isDevMode()\r\n  ? 'http://localhost:5000/api'\r\n  : 'https://rajat-portfolio-backend.onrender.com/api'; // <-- Replace with your live Render backend URL once deployed\r\n"],
+  "mappings": ";;;;;AAGO,IAAM,eAAe,UAAS,IACjC,8BACA;",
+  "names": []
+}

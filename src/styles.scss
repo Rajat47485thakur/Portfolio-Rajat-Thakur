@@ -685,3 +685,13 @@ app-project-item {
 .border-dark-subtle {
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
+
+/* CMS Login Input Spacing Overrides to prevent overlapping icons */
+.input-icon-group {
+  position: relative;
+  
+  .text-input.form-control {
+    padding-left: 3.25rem !important; /* Spacious left padding for user/lock icons */
+    padding-right: 3.5rem !important; /* Spacious right padding for show/hide eye toggle button */
+  }
+}
